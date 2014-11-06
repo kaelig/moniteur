@@ -1,0 +1,23 @@
+{
+  "name": "assets-graph",
+  "version": "0.0.1",
+  "description": "Graph your front-end assets over time",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaelig/assets-graph.git"
+  },
+  "keywords": [
+    "webperf",
+    "performance"
+  ],
+  "author": "Kaelig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaelig/assets-graph/issues"
+  },
+  "homepage": "https://github.com/kaelig/assets-graph"
+}
