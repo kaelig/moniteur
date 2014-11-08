@@ -1,0 +1,4 @@
+{
+  "stylesheets": ["screen.css", "print.css"],
+  "javascripts": ["app.js"]
+}

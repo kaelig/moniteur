@@ -1,0 +1,1 @@
+Test: `node lib/index.js --config ../test/fixtures/test-config.json`
