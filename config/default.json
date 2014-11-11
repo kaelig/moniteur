@@ -1,4 +1,10 @@
 {
   "stylesheets": ["screen.css", "print.css"],
-  "javascripts": ["app.js"]
+  "javascripts": ["app.js"],
+  "cssmetrics":{
+    "size": "Size",
+    "gzippedSize": "Size (gzipped)",
+    "rules": "Rules",
+    "selectors": "Selectors"
+  }
 }
