@@ -215,7 +215,7 @@ Should log objects of average data readings and timeseries of readings:
 
 <http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average>
 
-```
+```json
 {
     "size": 46979.6,
     "gzippedSize": 9362.8,
