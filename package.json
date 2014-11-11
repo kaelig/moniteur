@@ -1,14 +1,7 @@
 {
   "name": "assets-graph",
-  "version": "0.0.1",
-  "description": "Graph your front-end assets over time",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "npm run code-quality && npm run unit-tests",
-    "code-quality": "jshint src/",
-    "unit-tests": "mocha tests/**/*.js"
-  },
+  "version": "0.0.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/kaelig/assets-graph.git"
@@ -27,6 +20,10 @@
     "jshint": "^2.5.10",
     "mocha": "^2.0.1"
   },
+  "scripts": {
+    "unit-tests": "mocha tests/**/*.js",
+    "start": "DEBUG=test-express ./bin/www  --config ../test/fixtures/test-config.json"
+  },
   "dependencies": {
     "MD5": "^1.2.1",
     "es6-promise": "^2.0.0",
@@ -39,6 +36,13 @@
     "q": "^1.0.1",
     "stylestats": "^4.1.4",
     "through": "^2.3.6",
-    "yargs": "^1.3.2"
+    "yargs": "^1.3.2",
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.0.0",
+    "express": "~4.9.0",
+    "jade": "~1.6.0",
+    "morgan": "~1.3.0",
+    "serve-favicon": "~2.1.3"
   }
 }

@@ -20,3 +20,17 @@ Should return an object of average data readings:
     }
 }
 ```
+
+### HTTP API:
+
+`npm start`
+
+#### Average readings for a stylesheet (providing the asset name's hash)
+
+http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6
+
+`{ "size": 58719, "gzippedSize": 11693, "rules": 862, "selectors": 1076 }`
+
+#### Average between two dates
+
+http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475
