@@ -1,6 +1,6 @@
 {
   "name": "moniteur",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/kaelig/moniteur.git"
@@ -9,7 +9,7 @@
     "webperf",
     "performance"
   ],
-  "author": "Kaelig",
+  "author": "Kaelig <kaelig@deloumeau.fr>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kaelig/moniteur/issues"
