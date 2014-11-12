@@ -1,4 +1,10 @@
-## Asset monitor UI
+## Asset monitor
+
+Monitor your asset size over time, in your browser,
+or using the provided HTTP API.
+
+This is my first Node app, I know it is messy and it lacks tests.
+
 
 ### Development
 
@@ -9,229 +15,50 @@
 
 `npm start`
 
+`open http://localhost:3000`
+
+### Configuration
+
+For now, only stylesheets are supported.
+
+You can monitor separate local files, single assets or bundles of assets:
+
+```json
+{
+  "assets": {
+    "stylesheets": {
+      "Main CSS": "test/fixtures/main.css",
+      "Another CSS": "test/fixtures/main2.css",
+      "FT desktop CSS bundle": [
+        "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
+        "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
+        "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
+      ],
+      "Guardian's CSS": "http://assets.guim.co.uk/stylesheets/df893cb0c705c642348c474dbbd59f73/global.css"
+    }
+  }
+}
+```
+
 ## Asset monitor API
 
 #### Add a data point
 
 `node lib/index.js --config ../test/fixtures/test-config.json`
 
-#### Read data points:
+#### Read data points
 
 `node lib/read.js --config ../test/fixtures/test-config.json`
 
-Should log objects of average data readings and timeseries of readings:
+#### JSON data object for HighCharts (providing the asset name's hash)
 
-```json
-{
-    "test/fixtures/main.css": {
-        "size": 80,
-        "gzippedSize": 89,
-        "rules": 3,
-        "selectors": 3
-    },
-    "test/fixtures/main2.css": {
-        "size": 46979.6,
-        "gzippedSize": 9362.8,
-        "rules": 689.8,
-        "selectors": 861
-    }
-}
-{
-    "test/fixtures/main.css": [
-        {
-            "name": "Size",
-            "data": [
-                [
-                    1415640296075,
-                    80
-                ]
-            ]
-        },
-        {
-            "name": "Size (gzipped)",
-            "data": [
-                [
-                    1415640296076,
-                    89
-                ]
-            ]
-        },
-        {
-            "name": "Rules",
-            "data": [
-                [
-                    1415640296076,
-                    3
-                ]
-            ]
-        },
-        {
-            "name": "Selectors",
-            "data": [
-                [
-                    1415640296076,
-                    3
-                ]
-            ]
-        }
-    ],
-    "test/fixtures/main2.css": [
-        {
-            "name": "Size",
-            "data": [
-                [
-                    1415640296143,
-                    58719
-                ]
-            ]
-        },
-        {
-            "name": "Size (gzipped)",
-            "data": [
-                [
-                    1415640296143,
-                    11693
-                ]
-            ]
-        },
-        {
-            "name": "Rules",
-            "data": [
-                [
-                    1415640296143,
-                    862
-                ]
-            ]
-        },
-        {
-            "name": "Selectors",
-            "data": [
-                [
-                    1415640296143,
-                    1076
-                ]
-            ]
-        }
-    ]
-}
-```
-
-### HTTP API:
-
-`npm start`
-
-#### Time series  readings for a stylesheet (providing the asset name's hash)
-<http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average>
-
-```json
-[
-    {
-        "name": "Size",
-        "data": [
-            [
-                1415640296143,
-                58719
-            ],
-            [
-                1415640302227,
-                58719
-            ],
-            [
-                1415641721382,
-                58719
-            ],
-            [
-                1415722633178,
-                58719
-            ],
-            [
-                1415722668469,
-                22
-            ]
-        ]
-    },
-    {
-        "name": "Size (gzipped)",
-        "data": [
-            [
-                1415640296143,
-                11693
-            ],
-            [
-                1415640302227,
-                11693
-            ],
-            [
-                1415641721382,
-                11693
-            ],
-            [
-                1415722633179,
-                11693
-            ],
-            [
-                1415722668469,
-                42
-            ]
-        ]
-    },
-    {
-        "name": "Rules",
-        "data": [
-            [
-                1415640296143,
-                862
-            ],
-            [
-                1415640302227,
-                862
-            ],
-            [
-                1415641721382,
-                862
-            ],
-            [
-                1415722633179,
-                862
-            ],
-            [
-                1415722668469,
-                1
-            ]
-        ]
-    },
-    {
-        "name": "Selectors",
-        "data": [
-            [
-                1415640296143,
-                1076
-            ],
-            [
-                1415640302227,
-                1076
-            ],
-            [
-                1415641721382,
-                1076
-            ],
-            [
-                1415722633179,
-                1076
-            ],
-            [
-                1415722668469,
-                1
-            ]
-        ]
-    }
-]
-```
+<http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6>
 
 #### Average readings for a stylesheet (providing the asset name's hash)
 
 <http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average>
 
+Returns something in the form
 ```json
 {
     "size": 46979.6,
@@ -243,3 +70,22 @@ Should log objects of average data readings and timeseries of readings:
 #### Average between two dates
 
 <http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average>
+
+
+#### License
+
+MIT
+
+#### Roadmap
+
+- Run as some sort of daemon that monitors asset metrics every X seconds
+- Asset size budget limits
+- Monitor JavaScript files
+- Email alert when budget is almost reached or exceeded
+- Weekly email recaps
+- Tests!
+- Deployment script
+- (maybe?) providing a page's URL, scrape all assets out of it
+  and analyse them
+- Option to filter graphs by time ranges
+  (last 7 days, last 30 days, last year)
