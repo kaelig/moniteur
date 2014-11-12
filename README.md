@@ -11,16 +11,18 @@ More features to come: [see roadmap](#roadmap).
 
 ### Development
 
-`npm install moniteur`
+```bash
+npm install moniteur
+```
 
 The node module is still at a very early stage and probably
 won't run for now, sorry, but you can still clone the project.
 
 Clone the repository and run these commands:
 
-`npm install -g nodemon`
-
-`npm run-script dev`
+```bash
+npm run dev
+```
 
 ### Start
 
@@ -55,11 +57,15 @@ You can monitor separate local files, single assets or bundles of assets:
 
 #### Add a data point
 
-`node lib/index.js --config ../test/fixtures/test-config.json`
+```bash
+node lib/index.js --config ../test/fixtures/test-config.json
+```
 
 #### Read data points
 
-`node lib/read.js --config ../test/fixtures/test-config.json`
+```bash
+node lib/read.js --config ../test/fixtures/test-config.json
+```
 
 
 ### HTTP API
@@ -77,6 +83,7 @@ You can monitor separate local files, single assets or bundles of assets:
 `/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average`
 
 Returns something in the form of:
+
 ```json
 {
     "size": 46979.6,
@@ -85,6 +92,7 @@ Returns something in the form of:
     "selectors": 861
 }
 ```
+
 #### Average between two dates
 
 `/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average`
