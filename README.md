@@ -1,6 +1,23 @@
-Add a data point: `node lib/index.js --config ../test/fixtures/test-config.json`
+## Asset monitor UI
 
-Read data points: `node lib/read.js --config ../test/fixtures/test-config.json`
+### Development
+
+`npm install -g nodemon`
+`npm run-script dev`
+
+### Start
+
+`npm start`
+
+## Asset monitor API
+
+#### Add a data point
+
+`node lib/index.js --config ../test/fixtures/test-config.json`
+
+#### Read data points:
+
+`node lib/read.js --config ../test/fixtures/test-config.json`
 
 Should log objects of average data readings and timeseries of readings:
 

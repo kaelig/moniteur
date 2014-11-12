@@ -22,7 +22,8 @@
   },
   "scripts": {
     "unit-tests": "mocha tests/**/*.js",
-    "start": "DEBUG=test-express ./bin/www  --config ../test/fixtures/test-config.json"
+    "start": "DEBUG=assets-graph ./bin/www  --config ../test/fixtures/test-config.json",
+    "dev": "DEBUG=assets-graph nodemon -e js,jade,html,css ./bin/www  --config ../test/fixtures/test-config.json"
   },
   "dependencies": {
     "MD5": "^1.2.1",
