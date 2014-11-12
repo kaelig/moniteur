@@ -1,3 +1,13 @@
 {
-  "stylesheets": ["test/fixtures/main.css", "test/fixtures/main2.css"]
+  "stylesheets": {
+    "test/fixtures/main.css": {
+      "name": "Test CSS"
+    },
+    "test/fixtures/main2.css": {
+      "name": "Another CSS"
+    },
+    "http://assets.guim.co.uk/stylesheets/06082f6fcbc84c4c33f6b54a347907e3/global.css": {
+      "name": "Guardian's CSS"
+    }
+  }
 }

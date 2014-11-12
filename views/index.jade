@@ -6,61 +6,89 @@ block content
 
   script.
     $(function () {
-      $.each(["test/fixtures/main.css", "test/fixtures/main2.css"], function(index, asset) {
-        $('#container').append('<div id="highcharts-' + CryptoJS.MD5(asset) + '" />');
-        $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
-          $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
-              chart: {
-                  type: 'spline'
-              },
-              title: {
-                  text: asset
-              },
-              xAxis: {
+      $.getJSON('/config', function (config) {
+        var assets = Object.keys(config.stylesheets);
+        $.each(assets, function(index, asset) {
+          $('#container').append('<div id="highcharts-' + CryptoJS.MD5(asset) + '" class="chart-wrapper" />');
+          $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
+            $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
+                chart: {
+                  type: 'spline',
+                },
+                credits: {
+                    enabled: false
+                },
+                navigation: {
+                  buttonOptions: {
+                    enabled: false
+                  }
+                },
+                title: {
+                  text: config.stylesheets[asset].name
+                },
+                xAxis: {
                   type: 'datetime',
                   dateTimeLabelFormats: { // don't display the dummy year
-                      month: '%e. %b',
-                      year: '%b'
+                    month: '%e. %b',
+                    year: '%b'
                   },
                   title: {
-                      text: 'Date'
+                    enabled: false
                   }
-              },
-              yAxis: [{
-                  title: {
-                    enabled: false
-                  },
-                  min: 0
-              },{
-                  title: {
-                    enabled: false
-                  },
-                  opposite: true,
-                  min: 0
-              }],
-              plotOptions: {
-                  spline: {
-                      lineWidth: 4,
+                },
+                yAxis: [
+                  {
+                    title: {
+                      text: 'Size'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value / 1000 + ' kB';
+                        }
+                    },
+                    min: 0
+                  },{
+                    title: {
+                      text: 'Count'
+                    },
+                    opposite: true,
+                    min: 0
+                  }
+                ],
+                plotOptions: {
+                    area: {
+                      marker: {
+                        symbol: 'circle',
+                        radius: 5,
+                      },
+                      lineWidth: 3,
                       states: {
                           hover: {
                               lineWidth: 5
                           }
                       },
                       pointInterval: 3600000, // one hour
-                  }
-              },
-              legend: {
-                  layout: 'vertical',
-                  align: 'right',
-                  verticalAlign: 'middle',
-                  borderWidth: 0
-              },
-              tooltip: {
+                    },
+                    line: {
+                      marker: {
+                        symbol: 'circle',
+                        radius: 3
+                      },
+                      lineWidth: 1,
+                      states: {
+                        hover: {
+                          lineWidth: 3
+                        }
+                      },
+                      pointInterval: 3600000, // one hour
+                    }
+                },
+                tooltip: {
                   headerFormat: '<b>{series.name}</b><br>',
-                  pointFormat: '{point.x:%e. %b}: {point.y:.2f}'
-              },
-
-              series: series
+                  pointFormat: '{point.x:%b %e, %H:%M}: <b>{point.y}</b>'
+                },
+                series: series
+            });
           });
         });
       });

@@ -1,8 +1,16 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
+  padding: 1em;
+  background: #2a2a2b;
+  color: white;
 }
 
 a {
   color: #00B7FF;
+}
+
+.chart-wrapper {
+  width: 100%;
+  min-height: 400px;
+  margin: 2em 0;
 }
