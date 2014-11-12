@@ -88,11 +88,11 @@ Returns something in the form of:
 `/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average`
 
 
-#### License
+## License
 
 ISC
 
-#### Roadmap
+## Roadmap
 
 - Make moniteur a working node module
 - Run as some sort of daemon that monitors asset metrics every X seconds
