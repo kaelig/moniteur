@@ -10,6 +10,7 @@ This is my first Node app, I know it is messy and it lacks tests.
 ### Development
 
 `npm install -g nodemon`
+
 `npm run-script dev`
 
 ### Start
@@ -47,19 +48,29 @@ You can monitor separate local files, single assets or bundles of assets:
 
 `node lib/index.js --config ../test/fixtures/test-config.json`
 
+
+
+
 #### Read data points
 
 `node lib/read.js --config ../test/fixtures/test-config.json`
 
+
+### HTTP API
+
+#### Read configuration
+
+`/config`
+
 #### JSON data object for HighCharts (providing the asset name's hash)
 
-<http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6>
+`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6`
 
 #### Average readings for a stylesheet (providing the asset name's hash)
 
-<http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average>
+`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average`
 
-Returns something in the form
+Returns something in the form of:
 ```json
 {
     "size": 46979.6,
@@ -70,7 +81,7 @@ Returns something in the form
 ```
 #### Average between two dates
 
-<http://localhost:3000/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average>
+`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average`
 
 
 #### License
