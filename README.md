@@ -5,6 +5,8 @@ or using the provided HTTP API.
 
 This is my first Node app, I know it is messy and it lacks tests.
 
+More features to come: [see roadmap](#roadmap).
+
 ![ ](https://github.com/kaelig/moniteur/blob/master/docs/screenshot.png)
 
 ### Development
