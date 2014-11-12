@@ -9,6 +9,13 @@ This is my first Node app, I know it is messy and it lacks tests.
 
 ### Development
 
+`npm install moniteur`
+
+The node module is still at a very early stage and probably
+won't run for now, sorry, but you can still clone the project.
+
+Clone the repository and run these commands:
+
 `npm install -g nodemon`
 
 `npm run-script dev`
@@ -47,9 +54,6 @@ You can monitor separate local files, single assets or bundles of assets:
 #### Add a data point
 
 `node lib/index.js --config ../test/fixtures/test-config.json`
-
-
-
 
 #### Read data points
 
@@ -90,6 +94,7 @@ ISC
 
 #### Roadmap
 
+- Make moniteur a working node module
 - Run as some sort of daemon that monitors asset metrics every X seconds
 - Asset size budget limits
 - Monitor JavaScript files
