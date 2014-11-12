@@ -1,9 +1,11 @@
-## Asset monitor
+## moniteur
 
 Monitor your asset size over time, in your browser,
 or using the provided HTTP API.
 
 This is my first Node app, I know it is messy and it lacks tests.
+
+
 
 
 ### Development
@@ -74,7 +76,7 @@ Returns something in the form
 
 #### License
 
-MIT
+ISC
 
 #### Roadmap
 

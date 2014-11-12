@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('assets-graph');
+var debug = require('debug')('moniteur');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);

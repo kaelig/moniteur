@@ -1,10 +1,10 @@
 {
-  "name": "assets-graph",
-  "version": "0.0.0",
+  "name": "moniteur",
+  "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaelig/assets-graph.git"
+    "url": "https://github.com/kaelig/moniteur.git"
   },
   "keywords": [
     "webperf",
@@ -13,17 +13,17 @@
   "author": "Kaelig",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kaelig/assets-graph/issues"
+    "url": "https://github.com/kaelig/moniteur/issues"
   },
-  "homepage": "https://github.com/kaelig/assets-graph",
+  "homepage": "https://github.com/kaelig/moniteur",
   "devDependencies": {
     "jshint": "^2.5.10",
     "mocha": "^2.0.1"
   },
   "scripts": {
     "unit-tests": "mocha tests/**/*.js",
-    "start": "DEBUG=assets-graph ./bin/www  --config ../test/fixtures/test-config.json",
-    "dev": "DEBUG=assets-graph nodemon -e js,jade,html,css,json ./bin/www  --config ../test/fixtures/test-config.json"
+    "start": "DEBUG=moniteur ./bin/www  --config ../test/fixtures/test-config.json",
+    "dev": "DEBUG=moniteur nodemon -e js,jade,html,css,json ./bin/www  --config ../test/fixtures/test-config.json"
   },
   "dependencies": {
     "MD5": "^1.2.1",
