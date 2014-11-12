@@ -7,8 +7,9 @@ block content
   script.
     $(function () {
       $.getJSON('/config', function (config) {
-        var assets = Object.keys(config.stylesheets);
-        $.each(assets, function(index, asset) {
+        var stylesheets = Object.keys(config.assets.stylesheets);
+
+        $.each(stylesheets, function(index, asset) {
           $('#container').append('<div id="highcharts-' + CryptoJS.MD5(asset) + '" class="chart-wrapper" />');
           $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
             $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
@@ -24,7 +25,7 @@ block content
                   }
                 },
                 title: {
-                  text: config.stylesheets[asset].name
+                  text: asset
                 },
                 xAxis: {
                   type: 'datetime',

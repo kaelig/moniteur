@@ -11,6 +11,9 @@ var config = require('./routes/config');
 
 var app = express();
 
+var compress = require('compression');
+app.use(compress());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

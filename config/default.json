@@ -1,39 +1,34 @@
 {
-  "stylesheets": {
-    "stylesheets/screen.css": {
-      "name": "Screen styles"
-    },
-    "stylesheets/print.css": {
-      "name": "Print styles"
+  "assets": {
+    "stylesheets": {
+      "Screen styles": "stylesheets/screen.css",
+      "Print styles": "stylesheets/print.css"
     }
   },
-  "javascripts": {
-    "javascripts/app.js": {
-      "name": "Application JS"
-    }
-  },
-  "cssmetrics":{
-    "size": {
-      "name": "Size",
-      "yAxis": 0,
-      "chartType": "area",
-      "fillOpacity": "0.1"
-    },
-    "gzippedSize": {
-      "name": "Size (gzipped)",
-      "yAxis": 0,
-      "chartType": "area",
-      "fillOpacity": "0.1"
-    },
-    "rules": {
-      "name": "Rules",
-      "yAxis": 1,
-      "chartType": "line"
-    },
-    "selectors": {
-      "name": "Selectors",
-      "yAxis": 1,
-      "chartType": "line"
+  "metrics": {
+    "stylesheets": {
+      "size": {
+        "name": "Size",
+        "yAxis": 0,
+        "chartType": "area",
+        "fillOpacity": "0.1"
+      },
+      "gzippedSize": {
+        "name": "Size (gzipped)",
+        "yAxis": 0,
+        "chartType": "area",
+        "fillOpacity": "0.1"
+      },
+      "rules": {
+        "name": "Rules",
+        "yAxis": 1,
+        "chartType": "line"
+      },
+      "selectors": {
+        "name": "Selectors",
+        "yAxis": 1,
+        "chartType": "line"
+      }
     }
   }
 }

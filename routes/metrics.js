@@ -32,7 +32,7 @@ router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?(\/average)?$/, function(req, res)
       );
     });
   } else {
-    metricreading = readMetrics.getSeries(category, assethash, options);
+    metricreading = readMetrics.getSerie(category, assethash, options);
     Promise.all(metricreading).then(function(data) {
       res.send(
         JSON.stringify(data, null, 4)
