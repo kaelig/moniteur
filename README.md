@@ -58,13 +58,13 @@ You can monitor separate local files, single assets or bundles of assets:
 #### Add a data point
 
 ```bash
-node lib/save.js --config ../test/fixtures/test-config.json
+moniteur save --config ../test/fixtures/test-config.json
 ```
 
 #### Read data points
 
 ```bash
-node lib/read.js --config ../test/fixtures/test-config.json
+moniteur read --config ../test/fixtures/test-config.json
 ```
 
 
