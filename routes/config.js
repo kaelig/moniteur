@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../lib/config-file.js');
+var config = require('../lib/config.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {

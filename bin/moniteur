@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+
+var debug = require('debug');
+var log = debug('app:log');
+// var _ = require('lodash');
+var program = require('commander');
+var Promise = require('es6-promise').Promise;
+
+var config = require('../lib/config');
+var db = require('../lib/db');
+
+program
+  .command('save')
+  .action(function () {
+    var Save = require('../').save;
+    var save = new Save(
+      config.assets.stylesheets,
+      config,
+      db
+    );
+
+    var recorders = save.init();
+    var CSSDataPoints = save.recordCSSDataPoint();
+
+    Promise.all(CSSDataPoints).then(function(dataPoints) {
+      log(JSON.stringify(dataPoints, null, 4));
+    });
+  });
+
+program
+  .command('read')
+  .action(function () {
+    var Read = require('../').read;
+    var read = new Read(config.assets, config, db);
+
+    var CSSseries = read.all();
+
+    Promise.all(CSSseries).then(function(data) {
+      log(
+        JSON.stringify(data, null, 4)
+      );
+    });
+  });
+
+program.parse(process.argv);

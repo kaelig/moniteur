@@ -1,45 +1,38 @@
 /*jshint -W079 */
 var _ = require('lodash');
+var debug = require('debug');
+var log = debug('app:log');
 var express = require('express');
 var router = express.Router();
-var readMetrics = require('../lib/read.js');
+var config = require('../lib/config');
 var Promise = require('es6-promise').Promise;
+var db = require('../lib/db');
 
 // Example: 
-// Average of all time: /asset/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average
-// Average between two dates: /asset/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average
-// Series (since forever): /metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average
+// Series (since forever): /metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6
 // Series between two dates: /metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475
 
-router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?(\/average)?$/, function(req, res) {
-
+router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function(req, res) {
   var metricreading;
-  var category = req.params[0];
-  var assethash = req.params[1];
-  var average = req.params[5];
+  var asset = req.params[1];
   var options = {
+    category: req.params[0],
     start: req.params[3] || 0,
     end: req.params[4] || 0
   };
 
   res.type('application/json');
 
-  if (average) {
-    metricreading = readMetrics.getAverage(category, assethash, options);
-    Promise.all(metricreading).then(function(data) {
-      res.send(
-        JSON.stringify(_.object(data), null, 4)
-      );
-    });
-  } else {
-    metricreading = readMetrics.getSerie(category, assethash, options);
-    Promise.all(metricreading).then(function(data) {
-      res.send(
-        JSON.stringify(data, null, 4)
-      );
-    });
-  }
+  var Read = require('../').read;
+  var read = new Read([asset], _.defaults(options, config), db);
 
+  var CSSseries = read.getMetrics(asset);
+
+  Promise.all(CSSseries).then(function(data) {
+    res.send(
+      JSON.stringify(data, null, 4)
+    );
+  });
 });
 
 module.exports = router;

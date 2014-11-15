@@ -58,7 +58,7 @@ You can monitor separate local files, single assets or bundles of assets:
 #### Add a data point
 
 ```bash
-node lib/index.js --config ../test/fixtures/test-config.json
+node lib/save.js --config ../test/fixtures/test-config.json
 ```
 
 #### Read data points
@@ -76,26 +76,12 @@ node lib/read.js --config ../test/fixtures/test-config.json
 
 #### JSON data object for HighCharts (providing the asset name's hash)
 
+Since forever:
 `/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6`
 
-#### Average readings for a stylesheet (providing the asset name's hash)
+Between two dates:
+`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475`
 
-`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/average`
-
-Returns something in the form of:
-
-```json
-{
-    "size": 46979.6,
-    "gzippedSize": 9362.8,
-    "rules": 689.8,
-    "selectors": 861
-}
-```
-
-#### Average between two dates
-
-`/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475/average`
 
 
 ## License
@@ -116,3 +102,4 @@ ISC
   and analyse them
 - Option to filter graphs by time ranges
   (last 7 days, last 30 days, last year)
+- UA switch for remote assets
