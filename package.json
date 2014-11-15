@@ -1,6 +1,9 @@
 {
   "name": "moniteur",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "bin": {
+    "moniteur": "./bin/moniteur"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kaelig/moniteur.git"
