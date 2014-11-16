@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-- '0.11'
+  - '0.11'
 deploy:
   api_key:
     secure: Or/ta5jOtaiWcXMXFAJBTHyk40kZkGl9g1+cSFf6WiJ/6HvlOXMD6/aSrFfPhKO3hBmJ2YBimt6mbfxqCyfZl7lMySLCzdv2q8amEVeUrRYgvfjzBhpMn+epi0hbuHYm5dMwu8gHu5GZTsaSYXhaSwPf2TusSYle8Wa6h+peY1A=
   provider: npm
   on:
-  - tags: true
+    - tags: true
