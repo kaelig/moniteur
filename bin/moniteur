@@ -43,4 +43,17 @@ program
     });
   });
 
+program
+  .command('serve')
+  .action(function () {
+    var app = require('../app');
+
+    app.set('port', process.env.PORT || 3000);
+
+    var server = app.listen(app.get('port'), function() {
+      console.log('Log ');
+      debug('Express server listening on port ' + server.address().port);
+    });
+  });
+
 program.parse(process.argv);
