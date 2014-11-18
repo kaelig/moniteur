@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-
 var debug = require('debug');
-var log = debug('app:log');
-// var _ = require('lodash');
+var log = debug('moniteur:log');
 var program = require('commander');
 var Promise = require('es6-promise').Promise;
 
@@ -11,17 +9,22 @@ var config = require('../lib/config');
 var db = require('../lib/db');
 
 program
-  .command('save')
-  .action(function () {
-    var Save = require('../').save;
-    var save = new Save(
+  .version(require('../package.json').version);
+
+program
+  // TODO: Uncomment description when issue https://github.com/tj/commander.js/issues/285
+  // is merged via https://github.com/tj/commander.js/pull/286
+  .command('record'/*, 'record a snapshot of all asset metrics'*/)
+  .action(function() {
+    var Record = require('../').record;
+    var record = new Record(
       config.assets.stylesheets,
       config,
       db
     );
 
-    var recorders = save.init();
-    var CSSDataPoints = save.recordCSSDataPoint();
+    var recorders = record.init();
+    var CSSDataPoints = record.recordCSSDataPoint();
 
     Promise.all(CSSDataPoints).then(function(dataPoints) {
       log(JSON.stringify(dataPoints, null, 4));
@@ -29,29 +32,13 @@ program
   });
 
 program
-  .command('read')
-  .action(function () {
-    var Read = require('../').read;
-    var read = new Read(config.assets, config, db);
-
-    var CSSseries = read.all();
-
-    Promise.all(CSSseries).then(function(data) {
-      log(
-        JSON.stringify(data, null, 4)
-      );
-    });
-  });
-
-program
-  .command('serve')
-  .action(function () {
+  .command('serve'/*, 'see assets sensor graphs in the browser'*/)
+  .action(function() {
     var app = require('../app');
 
     app.set('port', process.env.PORT || 3000);
 
     var server = app.listen(app.get('port'), function() {
-      console.log('Log ');
       debug('Express server listening on port ' + server.address().port);
     });
   });

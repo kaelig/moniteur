@@ -11,16 +11,57 @@ More features to come: [see roadmap](#roadmap).
 
 ![ ](https://github.com/kaelig/moniteur/blob/master/docs/screenshot.png)
 
-### Development
+### Installation
 
 ```bash
-npm install moniteur
+npm install -g moniteur
 ```
+
+### Usage:
+
+```bash
+Usage: moniteur [options] [command]
+
+Commands:
+
+  record   record a snapshot of all asset metrics
+  serve    see assets sensor graphs in the browser
+
+Options:
+
+  -h, --help           output usage information
+  -c, --config [path]  specify a configuration file
+  -V, --version        output the version number
+```
+
+Create a .moniteur.json file where you'd like to monitor asset sizes:
+```json
+{
+  "assets": {
+    "stylesheets": {
+      "My main CSS": "public/stylesheets/main.css"
+      "My bundle of CSS files": [
+        "core.css",
+        "head.css",
+        "index.css",
+        "global.css"
+      ],
+      "Remote stylesheet": "http://path/to/styles.css"
+    }
+  }
+}
+```
+
+Note: `moniteur` will load .moniteur.json file in your home directory
+and the current directory.
+
+
+### Development
 
 The node module is still at a very early stage and probably
 won't run for now, sorry, but you can still clone the project.
 
-Clone the repository and run these commands:
+Clone the repository and run:
 
 ```bash
 npm run dev
@@ -32,47 +73,21 @@ npm run dev
 
 `open http://localhost:3000`
 
-### Configuration
-
-For now, only stylesheets are supported.
-
-You can monitor separate local files, single assets or bundles of assets:
-
-```json
-{
-  "assets": {
-    "stylesheets": {
-      "Main CSS": "test/fixtures/main.css",
-      "Another CSS": "test/fixtures/main2.css",
-      "FT desktop CSS bundle": [
-        "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
-        "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
-        "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
-      ],
-      "Guardian's CSS": "http://assets.guim.co.uk/stylesheets/df893cb0c705c642348c474dbbd59f73/global.css"
-    }
-  }
-}
-```
-
 ## Asset monitor API
 
-#### Add a data point
+#### Record data
+
+Takes a snapshot of asset metrics and stores them in the `.moniteur/`
+directory.
 
 ```bash
-moniteur save --config ../test/fixtures/test-config.json
-```
-
-#### Read data points
-
-```bash
-moniteur read --config ../test/fixtures/test-config.json
+moniteur record --config ../test/fixtures/test-config.json
 ```
 
 
 ### HTTP API
 
-#### Read configuration
+#### View current configuration
 
 `/config`
 
@@ -85,10 +100,9 @@ Between two dates:
 `/metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475`
 
 
-
 ## License
 
-ISC
+MIT
 
 ## Roadmap
 

@@ -41,7 +41,6 @@ Highcharts.theme = {
     title: {
       style: {
         color: '#A0A0A3'
-
       }
     }
   },
@@ -100,11 +99,6 @@ Highcharts.theme = {
     },
     itemHiddenStyle: {
       color: '#606063'
-    }
-  },
-  credits: {
-    style: {
-      color: '#666'
     }
   },
   labels: {
