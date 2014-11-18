@@ -5,7 +5,7 @@
 Monitor your asset size over time, in your browser,
 or using the provided HTTP API.
 
-This is my first Node app, I know it is messy and it lacks tests.
+This is my first Node app, I know it is messy and it still lacks tests.
 
 More features to come: [see roadmap](#roadmap).
 
@@ -34,7 +34,7 @@ Options:
   -V, --version        output the version number
 ```
 
-Create a .moniteur.json file where you'd like to monitor asset sizes:
+Create a `.moniteur.json` file where you'd like to monitor asset sizes:
 ```json
 {
   "assets": {
