@@ -39,7 +39,7 @@ Create a .moniteur.json file where you'd like to monitor asset sizes:
 {
   "assets": {
     "stylesheets": {
-      "My main CSS": "public/stylesheets/main.css"
+      "My main CSS": "public/stylesheets/main.css",
       "My bundle of CSS files": [
         "core.css",
         "head.css",
