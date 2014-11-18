@@ -7,7 +7,7 @@ $(function () {
       $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
         $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
           chart: {
-            type: 'line'
+            type: 'spline'
           },
           credits: {
             enabled: false
@@ -58,7 +58,7 @@ $(function () {
             }
           },
           plotOptions: {
-            area: {
+            areaspline: {
               marker: {
                 symbol: 'circle',
                 radius: 5,
@@ -71,7 +71,7 @@ $(function () {
               },
               pointInterval: 3600000, // one hour
             },
-            line: {
+            spline: {
               marker: {
                 symbol: 'circle',
                 radius: 3
