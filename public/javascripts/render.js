@@ -7,7 +7,7 @@ $(function () {
       $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
         $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
           chart: {
-            type: 'spline'
+            type: 'line'
           },
           credits: {
             enabled: false
@@ -18,7 +18,8 @@ $(function () {
             }
           },
           title: {
-            text: asset
+            text: asset,
+            align: "left"
           },
           xAxis: {
             type: 'datetime',
@@ -41,7 +42,8 @@ $(function () {
                 }
               },
               min: 0
-            },{
+            },
+            {
               title: {
                 text: 'Count'
               },
@@ -49,6 +51,12 @@ $(function () {
               min: 0
             }
           ],
+          tooltip: {
+            crosshairs: [false, true],
+            formatter: function() {
+              return '<b>' + this.series.name + '</b><br />' + Highcharts.dateFormat('%b %e, %H:%M', this.x) + ': <b>' + ( this.series.type === 'area' ? prettyBytes(this.y) : this.y ) + '</b>';
+            }
+          },
           plotOptions: {
             area: {
               marker: {
@@ -62,10 +70,6 @@ $(function () {
                 }
               },
               pointInterval: 3600000, // one hour
-              tooltip: {
-                headerFormat: '<b>{series.name}</b><br>',
-                pointFormat: '{point.x:%b %e, %H:%M}: <b>{point.y} bytes</b>'
-              }
             },
             line: {
               marker: {
@@ -80,10 +84,6 @@ $(function () {
               },
               pointInterval: 3600000 // one hour
             }
-          },
-          tooltip: {
-            headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: '{point.x:%b %e, %H:%M}: <b>{point.y}:</b>'
           },
           series: series
         });

@@ -18,8 +18,7 @@ Highcharts.theme = {
   title: {
     style: {
       color: '#E0E0E3',
-      fontSize: '20px',
-      fontWeight: 'bold'
+      fontSize: '18px'
     }
   },
   subtitle: {

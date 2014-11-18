@@ -1,16 +1,43 @@
 body {
   font-family: sans-serif;
-  padding: 1em;
   background: #2a2a2b;
   color: white;
+  margin: 0;
 }
 
 a {
-  color: #00B7FF;
+  color: #ddd;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+h1,
+footer {
+  margin: 0;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, .3);
 }
 
 .chart-wrapper {
   width: 100%;
   min-height: 400px;
-  margin: 2em 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-top: .5rem solid rgba(0, 0, 0, .1);
+}
+
+.chart-wrapper:first-child {
+  border-top: 0;
+}
+
+@media (min-width: 600px) {
+  .chart-wrapper {
+    padding: 2rem;
+  }
+}
+
+footer a {
+  margin: 0 1.5em;
 }
