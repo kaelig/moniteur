@@ -50,8 +50,8 @@ Create a `.moniteur.json` file where you'd like to monitor asset sizes:
 }
 ```
 
-Note: `moniteur` will load .moniteur.json file in your home directory
-and the current directory.
+Note: `moniteur` will load `.moniteur.json` file in your home directory
+or the current directory.
 
 
 ### Development
