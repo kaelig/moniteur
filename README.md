@@ -24,14 +24,15 @@ Usage: moniteur [options] [command]
 
 Commands:
 
-  record   record a snapshot of all asset metrics
-  serve    see assets sensor graphs in the browser
+  record   undefined
+  serve    undefined
 
 Options:
 
   -h, --help           output usage information
-  -c, --config [path]  specify a configuration file
   -V, --version        output the version number
+  -c, --config [path]  specify a configuration file
+  -e, --engine [type]  Specify database engine [filesystem, redis]
 ```
 
 Create a `.moniteur.json` file where you'd like to monitor asset sizes:
