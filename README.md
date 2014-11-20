@@ -1,6 +1,4 @@
-## moniteur
-
-[![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur)
+# moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur)
 
 Monitor your asset size over time, in your browser,
 or using the provided HTTP API.
