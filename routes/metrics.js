@@ -4,9 +4,7 @@ var debug = require('debug');
 var log = debug('app:log');
 var express = require('express');
 var router = express.Router();
-var config = require('../lib/config');
 var Promise = require('es6-promise').Promise;
-var db = require('../lib/db');
 
 // Example: 
 // Series (since forever): /metrics/stylesheets/adf6e9c154cb57a818f7fb407085bff6
@@ -24,7 +22,7 @@ router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function(req, res) {
   res.type('application/json');
 
   var Read = require('../').read;
-  var read = new Read([asset], _.defaults(options, config), db);
+  var read = new Read([asset], _.defaults(options, res.locals.config), res.locals.db);
 
   var CSSseries = read.getMetrics(asset);
 

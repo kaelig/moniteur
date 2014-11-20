@@ -38,7 +38,7 @@ program
 program
   .command('serve'/*, 'see assets sensor graphs in the browser'*/)
   .action(function() {
-    var app = require('../app');
+    var app = require('../app')(config(program.config), db(program.engine));
 
     app.set('port', process.env.PORT || 3000);
 
