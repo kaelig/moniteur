@@ -9,7 +9,10 @@ var config = require('../lib/config');
 var db = require('../lib/db');
 
 program
-  .version(require('../package.json').version);
+  .version(require('../package.json').version)
+  // Extend default config when --config is specified
+  .option('-c, --config [path]', 'specify a configuration file')
+  .option('-e, --engine [type]', 'Specify database engine [filesystem, redis]', 'filesystem');
 
 program
   // TODO: Uncomment description when issue https://github.com/tj/commander.js/issues/285
@@ -18,9 +21,9 @@ program
   .action(function() {
     var Record = require('../').record;
     var record = new Record(
-      config.assets.stylesheets,
-      config,
-      db
+      config(program.config).assets.stylesheets,
+      config(program.config),
+      db(program.engine)
     );
 
     var recorders = record.init();
@@ -28,6 +31,7 @@ program
 
     Promise.all(CSSDataPoints).then(function(dataPoints) {
       log(JSON.stringify(dataPoints, null, 4));
+      process.exit(0);
     });
   });
 
