@@ -107,16 +107,16 @@ MIT
 
 ## Roadmap
 
-- Make moniteur a working node module
-- Run as some sort of daemon that monitors asset metrics every X seconds
-- Asset size budget limits
-- Monitor JavaScript files
-- Email alert when budget is almost reached or exceeded
-- Weekly email recaps
-- Tests!
-- Deployment script
-- (maybe?) providing a page's URL, scrape all assets out of it
+- [x] Make moniteur a working node module
+- [x] Run as some sort of daemon that monitors asset metrics every X seconds
+- [ ] Asset size budget limits
+- [ ] Monitor JavaScript files
+- [ ] Email alert when budget is almost reached or exceeded
+- [ ] Weekly email recaps
+- [ ] Unit / Integration tests
+- [ ] Deployment script
+- [ ] (maybe?) providing a page's URL, scrape all assets out of it
   and analyse them
-- Option to filter graphs by time ranges
+- [ ] Option to filter graphs by time ranges
   (last 7 days, last 30 days, last year)
-- UA switch for remote assets
+- [ ] UA switch to fetch remote assets for mobile/tablet/desktop
