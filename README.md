@@ -37,7 +37,7 @@ Options:
 
 Create a `.moniteur.json` file where you'd like to monitor asset sizes:
 ```json
-`{
+{
   "assets": {
     "stylesheets": {
       "My main CSS": "public/stylesheets/main.css",
@@ -50,7 +50,7 @@ Create a `.moniteur.json` file where you'd like to monitor asset sizes:
       "Remote stylesheet": "http://path/to/styles.css"
     }
   }
-}`
+}
 ```
 
 Note: `moniteur` will load `.moniteur.json` file in your home directory
