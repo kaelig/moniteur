@@ -24,8 +24,8 @@ Usage: moniteur [options] [command]
 
 Commands:
 
-  record   undefined
-  serve    undefined
+  record   grab a snapshot of all asset metrics
+  serve    see assets sensor graphs in the browser
 
 Options:
 
@@ -36,6 +36,7 @@ Options:
 ```
 
 Create a `.moniteur.json` file where you'd like to monitor asset sizes:
+
 ```json
 {
   "assets": {
@@ -59,20 +60,11 @@ or the current directory.
 
 ### Development
 
-The node module is still at a very early stage and probably
-won't run for now, sorry, but you can still clone the project.
-
 Clone the repository and run:
 
 ```bash
 npm run dev
 ```
-
-### Start
-
-`npm start`
-
-`open http://localhost:3000`
 
 ## Asset monitor API
 
