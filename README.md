@@ -35,7 +35,8 @@ Options:
   -e, --engine [type]  Specify database engine [filesystem, redis]
 ```
 
-Create a `.moniteur.json` file where you'd like to monitor asset sizes:
+Create a `moniteur.json` file in the directory where asset sizes
+should be stored (typically: the root directory of your project):
 
 ```json
 {
@@ -54,7 +55,7 @@ Create a `.moniteur.json` file where you'd like to monitor asset sizes:
 }
 ```
 
-Note: `moniteur` will load `.moniteur.json` file in your home directory
+Note: `moniteur` will load `moniteur.json` file in your home directory
 or the current directory.
 
 
@@ -101,6 +102,8 @@ MIT
 
 - [x] Make moniteur a working node module
 - [x] Run as some sort of daemon that monitors asset metrics every X seconds
+- [ ] `moniteur init`, a moniteur.json configuration file generator, with
+  interactive menus
 - [ ] Asset size budget limits
 - [ ] Monitor JavaScript files
 - [ ] Email alert when budget is almost reached or exceeded
