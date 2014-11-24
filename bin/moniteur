@@ -8,22 +8,23 @@ var Promise = require('es6-promise').Promise;
 var config = require('../lib/config');
 var db = require('../lib/db');
 
+
 program
   .version(require('../package.json').version)
   // Extend default config when --config is specified
-  .option('-c, --config [path]', 'specify a configuration file')
-  .option('-e, --engine [type]', 'Specify database engine [filesystem, redis]', 'filesystem');
+  .option('-c, --config [path]', 'specify a configuration file');
 
 program
   // TODO: Uncomment description when issue https://github.com/tj/commander.js/issues/285
   // is merged via https://github.com/tj/commander.js/pull/286
   .command('record'/*, 'record a snapshot of all asset metrics'*/)
   .action(function() {
+    config = config(program.config);
     var Record = require('../').record;
     var record = new Record(
-      config(program.config).assets.stylesheets,
-      config(program.config),
-      db(program.engine)
+      config.assets.stylesheets,
+      config,
+      db(config.db)
     );
 
     var recorders = record.init();
@@ -38,7 +39,8 @@ program
 program
   .command('serve'/*, 'see assets sensor graphs in the browser'*/)
   .action(function() {
-    var app = require('../app')(config(program.config), db(program.engine));
+    config = config(program.config);
+    var app = require('../app')(config, db(config.db));
 
     app.set('port', process.env.PORT || 3000);
 

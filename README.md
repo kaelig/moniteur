@@ -32,7 +32,6 @@ Options:
   -h, --help           output usage information
   -V, --version        output the version number
   -c, --config [path]  specify a configuration file
-  -e, --engine [type]  Specify database engine [filesystem, redis]
 ```
 
 Create a `moniteur.json` file in the directory where asset sizes

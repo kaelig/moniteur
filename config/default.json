@@ -4,5 +4,15 @@
       "Screen styles": "stylesheets/screen.css",
       "Print styles": "stylesheets/print.css"
     }
+  },
+  "db": {
+    "dev": {
+      "engine": "filesystem",
+      "directory": ".moniteur"
+    },
+    "prod": {
+      "engine": "redis",
+      "url": "redis://localhost:6379"
+    }
   }
 }
