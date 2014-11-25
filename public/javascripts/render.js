@@ -10,9 +10,9 @@ $(function () {
         var sizes = series[0].data; // sizes
         var firstSize = sizes[0][1];
         var lastSize = sizes[sizes.length-1][1];
-        var differenceSinceLastSize = firstSize - lastSize;
-        var trend = (differenceSinceLastSize < 0) ? 'up' : 'down';
-        var trendSign = (differenceSinceLastSize < 0) ? '+' : '';
+        var differenceSinceLastSize = lastSize - firstSize;
+        var trend = (differenceSinceLastSize < 0) ? 'down' : 'up';
+        var trendSign = (differenceSinceLastSize > 0) ? '+' : '';
 
         $container.prepend(
           '<h2 class="asset-name">' +
@@ -25,7 +25,7 @@ $(function () {
         );
 
         if (differenceSinceLastSize === 0) {
-          $container.find('.trend').html('=').removeClass('trend--down');
+          $container.find('.trend').html('=').removeClass('trend--up');
         }
 
         $graphContainer.highcharts({

@@ -3,6 +3,7 @@
     "stylesheets": {
       "FT desktop CSS bundle": [
         "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
+        "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
         "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
         "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
       ],
