@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   background: #2a2a2b;
   color: white;
   margin: 0;
@@ -20,24 +20,43 @@ footer {
   background: rgba(0, 0, 0, .3);
 }
 
-.chart-wrapper {
-  width: 100%;
-  min-height: 400px;
+.asset {
   padding: 1rem;
   box-sizing: border-box;
   border-top: .5rem solid rgba(0, 0, 0, .1);
 }
-
-.chart-wrapper:first-child {
+.asset:first-child {
   border-top: 0;
 }
-
 @media (min-width: 600px) {
-  .chart-wrapper {
+  .asset {
     padding: 2rem;
   }
 }
 
+.chart-wrapper {
+  width: 100%;
+  min-height: 400px;
+}
+
+
 footer a {
   margin: 0 1.5em;
+}
+
+.trend {
+  padding: 0 12px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: normal;
+  border-radius: .3em;
+  margin-right: 1em;
+  float: right;
+  background: rgba(255, 255, 255, .1);
+}
+.trend--down {
+  background: #399914;
+}
+.trend--up {
+  background: #99222F;
 }

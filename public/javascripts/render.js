@@ -3,9 +3,32 @@ $(function () {
     var stylesheets = Object.keys(config.assets.stylesheets);
 
     $.each(stylesheets, function(index, asset) {
-      $('#container').append('<div id="highcharts-' + CryptoJS.MD5(asset) + '" class="chart-wrapper" />');
+      $('#container').append('<div id="highcharts-' + CryptoJS.MD5(asset) + '" class="asset"><div class="chart-wrapper"></div></div>');
+      var $container = $('#highcharts-' + CryptoJS.MD5(asset));
+      var $graphContainer = $container.find('.chart-wrapper');
       $.getJSON('/metrics/stylesheets/' + CryptoJS.MD5(asset), function (series) {
-        $('#highcharts-' + CryptoJS.MD5(asset)).highcharts({
+        var sizes = series[0].data; // sizes
+        var firstSize = sizes[0][1];
+        var lastSize = sizes[sizes.length-1][1];
+        var differenceSinceLastSize = firstSize - lastSize;
+        var trend = (differenceSinceLastSize < 0) ? 'up' : 'down';
+        var trendSign = (differenceSinceLastSize < 0) ? '+' : '-';
+
+        $container.prepend(
+          '<h2 class="asset-name">' +
+            asset +
+            ' <span class="trend trend--' + trend + '" title="Evolution">' +
+              trendSign +
+              prettyBytes(differenceSinceLastSize) +
+            '</span>' +
+          '</h2>'
+        );
+
+        if (differenceSinceLastSize === 0) {
+          $container.find('.trend').html('=').removeClass('trend--down');
+        }
+
+        $graphContainer.highcharts({
           chart: {
             type: 'spline'
           },
@@ -18,8 +41,9 @@ $(function () {
             }
           },
           title: {
-            text: asset,
-            align: "left"
+            style: {
+              display: 'none'
+            }
           },
           xAxis: {
             type: 'datetime',
