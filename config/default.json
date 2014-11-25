@@ -6,11 +6,11 @@
     }
   },
   "db": {
-    "dev": {
+    "development": {
       "engine": "filesystem",
       "directory": ".moniteur"
     },
-    "prod": {
+    "production": {
       "engine": "redis",
       "url": "redis://localhost:6379"
     }
