@@ -58,6 +58,44 @@ Note: `moniteur` will load `moniteur.json` file in your home directory
 or the current directory.
 
 
+### Database configuration
+
+Moniteur relies on the `NODE_ENV` environment variable to select a database:
+
+```json
+{
+  "assets": {
+    // Stylesheets, scripts…
+  },
+  "db": {
+    "development": {
+      "engine": "filesystem",
+      "directory": ".moniteur"
+    },
+    "production": {
+      "engine": "redis",
+      "url": "redis://localhost:6379"
+    }
+  }
+}
+```
+
+For now, two types of storage are supported: Redis and local filesystem.
+
+#### Confidential Redis URL
+
+A confidential Redis URL can be passed through an environment variable,
+instead of having it stored in the configuration file:
+
+```
+DB_URL=redis://rediscloud:XXXX@pub-redis-XXXX.us-east-X-X.X.ec2.garantiadata.com:13714
+```
+
+Run your application like this:
+```
+DB_URL=redis://url moniteur [options]
+```
+
 ### Development
 
 Clone the repository and run:
