@@ -12,7 +12,7 @@ $(function () {
         var lastSize = sizes[sizes.length-1][1];
         var differenceSinceLastSize = firstSize - lastSize;
         var trend = (differenceSinceLastSize < 0) ? 'up' : 'down';
-        var trendSign = (differenceSinceLastSize < 0) ? '+' : '-';
+        var trendSign = (differenceSinceLastSize < 0) ? '+' : '';
 
         $container.prepend(
           '<h2 class="asset-name">' +
