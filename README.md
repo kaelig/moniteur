@@ -147,7 +147,7 @@ MIT
 - [ ] Weekly email recaps
 - [ ] Unit / Integration tests
 - [ ] Deployment script
-- [ ] (maybe?) providing a page's URL, scrape all assets out of it
+- [ ] Providing a page's URL, scrape all assets out of it
   and analyse them
 - [ ] Option to filter graphs by time ranges
   (last 7 days, last 30 days, last year)
