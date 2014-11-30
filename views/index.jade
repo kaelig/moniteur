@@ -7,10 +7,9 @@ block content
       - var name = stylesheet.name
       .js-asset.asset.l-container(id='asset-'+ hash, data-asset-hash=hash, data-asset-category="stylesheet")
         h2.asset__name
-          span.asset__type(title='Stylesheet')
-            {}
+          span.asset__category
           = name
-          a(href='#' + hash).asset__linkto ¶
+          a.asset__linkto(href='#' + hash) ¶
           span(title='Evolution over time', class='trend js-trend js-trend-' + hash)
             span.js-trend-sign =
             span.js-trend-value
