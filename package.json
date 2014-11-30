@@ -1,6 +1,6 @@
 {
   "name": "moniteur",
-  "version": "0.8.0",
+  "version": "0.7.1",
   "bin": {
     "moniteur": "./bin/moniteur"
   },
