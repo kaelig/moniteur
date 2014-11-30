@@ -139,16 +139,18 @@ MIT
 
 - [x] Make moniteur a working node module
 - [x] Run as some sort of daemon that monitors asset metrics every X seconds
+- [ ] Unit / Integration tests
+- [ ] Monitor JavaScript files
+- [ ] Option to filter graphs by time ranges
+  (last 7 days, last 30 days, last year)
+
+### Ideas
+
 - [ ] `moniteur init`, a moniteur.json configuration file generator, with
   interactive menus
 - [ ] Asset size budget limits
-- [ ] Monitor JavaScript files
 - [ ] Email alert when budget is almost reached or exceeded
 - [ ] Weekly email recaps
-- [ ] Unit / Integration tests
-- [ ] Deployment script
 - [ ] Providing a page's URL, scrape all assets out of it
   and analyse them
-- [ ] Option to filter graphs by time ranges
-  (last 7 days, last 30 days, last year)
 - [ ] UA switch to fetch remote assets for mobile/tablet/desktop
