@@ -42,7 +42,7 @@ module.exports = function(config, db) {
   app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 
   //provide browserified versions of all the files in a directory
-  app.use('/js', browserify('./public/javascripts'));
+  app.use('/js', browserify(__dirname + '/public/javascripts'));
 
   app.use('/', require('./routes/index'));
   app.use('/metrics', require('./routes/metrics'));
