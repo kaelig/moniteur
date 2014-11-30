@@ -40,16 +40,22 @@ should be stored (typically: the root directory of your project):
 ```json
 {
   "assets": {
-    "stylesheets": {
-      "My main CSS": "public/stylesheets/main.css",
-      "My bundle of CSS files": [
-        "core.css",
-        "head.css",
-        "index.css",
-        "global.css"
-      ],
-      "Remote stylesheet": "http://path/to/styles.css"
-    }
+    "My main CSS": "public/stylesheets/main.css",
+    "My bundle of CSS files": [
+      "core.css",
+      "head.css",
+      "index.css",
+      "global.css"
+    ],
+    "Remote stylesheet": "http://path/to/styles.css",
+    "Remote JavaScript": "http://path/to/styles.js",
+    "Single JavaScript file": "public/javascripts/app.js",
+    "Bundle of JavaScript files": [
+      "module-a.js",
+      "module-b.js",
+      "module-c.js",
+      "dependency.js"
+    ]
   }
 }
 ```
@@ -146,8 +152,9 @@ a great source of inspiration.
 - [ ] Unit / Integration tests
 - [ ] Option to filter graphs by time ranges
   (last 7 days, last 30 days, last year)
-- [ ] Providing a page's URL, scrape all assets out of it
+- [-] Providing a page's URL, scrape all assets out of it
   and analyse them
+- [-] Parse all assets in a particular directory
 
 ### Ideas
 
