@@ -9,7 +9,7 @@ This is my first Node app, I know it is messy and it still lacks tests.
 
 More features to come: [see roadmap](#roadmap).
 
-![ ](https://github.com/kaelig/moniteur/blob/master/docs/screenshot.png)
+![ ](https://cdn.rawgit.com/kaelig/moniteur/master/docs/screenshot.png)
 
 ### Installation
 
