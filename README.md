@@ -3,7 +3,7 @@
 Monitor your asset size over time, in your browser,
 or using the provided HTTP API.
 
-[View a demo](https://moniteur.herokuapp.com/) running every hour on Heroku.
+**[Demo](https://moniteur.herokuapp.com/)**: collecting data every 12 hours.
 
 This is my first Node app, I know it is messy and it still lacks tests.
 
