@@ -27,6 +27,7 @@ a:focus {
   text-decoration: none;
   opacity: 0;
   transition: opacity .1s 0;
+  padding: .3em;
 }
 .asset__linkto:hover,
 .asset__linkto:focus {
@@ -62,21 +63,28 @@ h1 {
   border-top: 0;
 }
 .asset__name {
-  position: relative;
+  font-size: 2em;
   margin-left: 1.33em;
 }
-.asset__type {
+.asset__category {
+  position: relative;
+}
+.asset__category::before {
+  content: '{}';
+  display: inline;
   position: absolute;
-  top: -.33em;
+  top: -.7em;
   display: inline-block;
-  width: 1em;
-  left: -1em;
-  letter-spacing: .1em;
-  font-weight: 200;
-  font-size: 1.8em;
+  left: -.5em;
+  letter-spacing: .15em;
+  font-weight: bolder;
+  font-size: 2.5em;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  opacity: .2;
+  opacity: .07;
   cursor: help;
+}
+[data-asset-category=javascript] .asset__category::before {
+  content: '❮❯';
 }
 
 .asset__chart {
