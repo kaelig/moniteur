@@ -1,6 +1,7 @@
 var md5 = require('MD5');
-var $ = require('jquery');
-var Highcharts = require('highcharts-browserify');
+var $ = require('jQuery');
+var Highcharts = require('Highcharts');
+require('./assets-graph-theme');
 var prettyBytes = require('pretty-bytes');
 
 function setTrend(assetHash, firstMetric, secondMetric) {

@@ -26,13 +26,25 @@
   "scripts": {
     "test": "mocha tests/**/*.js",
     "start": "./bin/moniteur serve",
-    "dev": "DEBUG=* nodemon -e js,jade,html,css,json ./bin/moniteur serve --config ./test/fixtures/test-config.json"
+    "dev": "DEBUG=* nodemon -e js,jade,html,css,json ./bin/moniteur serve --config ./test/fixtures/test-config.json",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "jQuery": "global:jQuery",
+    "Highcharts": "global:Highcharts"
   },
   "dependencies": {
     "MD5": "^1.2.1",
     "body-parser": "^1.8.4",
+    "bower": "^1.3.12",
     "browserify": "^6.3.3",
     "browserify-middleware": "^4.1.0",
+    "browserify-shim": "^3.8.0",
     "commander": "^2.5.0",
     "compression": "^1.2.1",
     "config": "^1.8.1",
@@ -41,7 +53,6 @@
     "es6-promise": "^2.0.0",
     "express": "^4.9.8",
     "gzip-size": "^1.0.0",
-    "highcharts-browserify": "git+https://github.com/kaelig/highcharts-browserify.git#master",
     "jade": "^1.6.0",
     "jquery": "^2.1.1",
     "lem": "^0.4.8",
