@@ -2,12 +2,13 @@ extends layout
 
 block content
   .assets
-    each stylesheet in stylesheets
-      - var hash = stylesheet.hash
-      - var name = stylesheet.name
-      .js-asset.asset.l-container(id='asset-'+ hash, data-asset-hash=hash, data-asset-category="stylesheet")
+    each asset in assets
+      - var hash = asset.hash
+      - var name = asset.name
+      - var type = asset.type
+      .js-asset.asset.l-container(id='asset-'+ hash, data-asset-hash=hash, data-asset-type=type)
         h2.asset__name
-          span.asset__category
+          span.asset__type
           = name
           a.asset__linkto(href='#' + hash) ¶
           span(title='Evolution over time', class='trend js-trend js-trend-' + hash)

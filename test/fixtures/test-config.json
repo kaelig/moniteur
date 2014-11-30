@@ -1,17 +1,23 @@
 {
   "assets": {
-    "stylesheets": {
-      "FT desktop CSS bundle": [
-        "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
-        "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
-        "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
-      ],
-      "Guardian's CSS": [
-        "http://assets.guim.co.uk/stylesheets/global.css",
-        "http://assets.guim.co.uk/stylesheets/head.default.css"
-      ],
-      "Main CSS": "test/fixtures/main.css",
-      "Another CSS": "test/fixtures/main2.css"
-    }
+    "FT desktop CSS bundle": [
+      "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
+      "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
+      "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
+    ],
+    "Guardian's CSS": [
+      "http://assets.guim.co.uk/stylesheets/global.css",
+      "http://assets.guim.co.uk/stylesheets/head.default.css"
+    ],
+    "Main CSS": "test/fixtures/main.css",
+    "Another CSS": "test/fixtures/main2.css",
+    "ABC Script": "test/fixtures/abc.js",
+    "My XYZ Script": "test/fixtures/xyz.js",
+    "My Bundle of Scripts": [
+      "test/fixtures/abc.js",
+      "test/fixtures/xyz.js",
+      "test/fixtures/abc.js"
+    ],
+    "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
   }
 }

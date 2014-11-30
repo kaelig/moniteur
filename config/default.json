@@ -1,9 +1,9 @@
 {
   "assets": {
-    "stylesheets": {
-      "Screen styles": "stylesheets/screen.css",
-      "Print styles": "stylesheets/print.css"
-    }
+    "Screen styles": "stylesheets/screen.css",
+    "Print styles": "stylesheets/print.css",
+    "Main bundle": "javascripts/bundle.min.js",
+    "Source": "javascripts/app.src.js"
   },
   "db": {
     "development": {

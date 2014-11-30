@@ -25,8 +25,9 @@ function graphStylesheets() {
 
   $('.js-asset').each(function(assetContainer) {
     var assetHash = $(this).data('asset-hash');
+    var assetType = $(this).data('asset-type');
 
-    $.getJSON('/metrics/stylesheets/' + assetHash, function (series) {
+    $.getJSON('/metrics/' + assetType + '/' + assetHash, function (series) {
       sizes = series[0].data;
       firstSize = sizes[0][1];
       lastSize = sizes[sizes.length-1][1];

@@ -22,16 +22,14 @@ program
     config = config(program.config);
     var Record = require('../').record;
     var record = new Record(
-      config.assets.stylesheets,
       config,
       db(config.db)
     );
 
     var recorders = record.init();
-    var CSSDataPoints = record.recordCSSDataPoint();
 
-    Promise.all(CSSDataPoints).then(function(dataPoints) {
-      log(JSON.stringify(dataPoints, null, 4));
+    Promise.all(record.recordDataPoints()).then(function(data) {
+      log('DataPoints:', JSON.stringify(data, null, 4));
       process.exit(0);
     });
   });

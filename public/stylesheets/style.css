@@ -66,10 +66,10 @@ h1 {
   font-size: 2em;
   margin-left: 1.33em;
 }
-.asset__category {
+.asset__type {
   position: relative;
 }
-.asset__category::before {
+.asset__type::before {
   content: '{}';
   display: inline;
   position: absolute;
@@ -82,7 +82,7 @@ h1 {
   font-family: "Helvetica Neue", Arial, sans-serif;
   opacity: .07;
 }
-[data-asset-category=javascript] .asset__category::before {
+[data-asset-type=js] .asset__type::before {
   content: '❮❯';
 }
 

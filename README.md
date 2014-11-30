@@ -135,14 +135,19 @@ Between two dates:
 
 MIT
 
+Acknowledgments: "merci" to https://github.com/t32k/stylestats, which has been
+a great source of inspiration.
+
 ## Roadmap
 
 - [x] Make moniteur a working node module
 - [x] Run as some sort of daemon that monitors asset metrics every X seconds
+- [x] Monitor JavaScript files
 - [ ] Unit / Integration tests
-- [ ] Monitor JavaScript files
 - [ ] Option to filter graphs by time ranges
   (last 7 days, last 30 days, last year)
+- [ ] Providing a page's URL, scrape all assets out of it
+  and analyse them
 
 ### Ideas
 
@@ -151,6 +156,5 @@ MIT
 - [ ] Asset size budget limits
 - [ ] Email alert when budget is almost reached or exceeded
 - [ ] Weekly email recaps
-- [ ] Providing a page's URL, scrape all assets out of it
-  and analyse them
 - [ ] UA switch to fetch remote assets for mobile/tablet/desktop
+
