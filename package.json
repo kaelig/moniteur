@@ -71,6 +71,7 @@
     "shelljs": "^0.3.0",
     "stylestats": "^4.1.4",
     "through": "^2.3.6",
+    "valid-url": "^1.0.9",
     "yargs": "^1.3.3"
   }
 }
