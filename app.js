@@ -38,7 +38,10 @@ module.exports = function(config, db) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+  app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 
+  //provide browserified versions of all the files in a directory
   app.use('/js', browserify('./public/javascripts'));
 
   app.use('/', require('./routes/index'));

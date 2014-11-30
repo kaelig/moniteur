@@ -1,0 +1,6 @@
+{
+  "name": "moniteur",
+  "dependencies": {
+    "highcharts": "~4.0.4"
+  }
+}
