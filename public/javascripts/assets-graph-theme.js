@@ -17,9 +17,11 @@ Highcharts.theme = {
   },
   title: {
     style: {
-      color: '#E0E0E3',
-      fontSize: '18px'
+      display: 'none'
     }
+  },
+  credits: {
+    enabled: false
   },
   subtitle: {
     style: {
@@ -31,16 +33,20 @@ Highcharts.theme = {
     gridLineColor: '#707073',
     labels: {
       style: {
-        color: '#E0E0E3'
+        color: '#E0E0E3',
+        fontSize: '12px'
       }
     },
     lineColor: '#707073',
     minorGridLineColor: '#505053',
     tickColor: '#707073',
+    type: 'datetime',
+    dateTimeLabelFormats: {
+      month: '%e. %b',
+      year: '%b'
+    },
     title: {
-      style: {
-        color: '#A0A0A3'
-      }
+      enabled: false
     }
   },
   yAxis: {
@@ -83,6 +89,30 @@ Highcharts.theme = {
     },
     errorbar: {
       color: 'white'
+    },
+    areaspline: {
+      marker: {
+        symbol: 'circle',
+        radius: 7
+      },
+      lineWidth: 5,
+      states: {
+        hover: {
+          lineWidth: 6
+        }
+      }
+    },
+    spline: {
+      marker: {
+        symbol: 'circle',
+        radius: 4
+      },
+      lineWidth: 3,
+      states: {
+        hover: {
+          lineWidth: 4
+        }
+      }
     }
   },
   legend: {
@@ -117,10 +147,7 @@ Highcharts.theme = {
 
   navigation: {
     buttonOptions: {
-      symbolStroke: '#DDDDDD',
-      theme: {
-        fill: '#505053'
-      }
+      enabled: false
     }
   },
 
