@@ -26,11 +26,13 @@
   "scripts": {
     "test": "mocha tests/**/*.js",
     "start": "./bin/moniteur serve",
-    "dev": "DEBUG=moniteur:log nodemon -e js,jade,html,css,json ./bin/moniteur serve --config ../test/fixtures/test-config.json"
+    "dev": "DEBUG=* nodemon -e js,jade,html,css,json ./bin/moniteur serve --config ./test/fixtures/test-config.json"
   },
   "dependencies": {
     "MD5": "^1.2.1",
     "body-parser": "^1.8.4",
+    "browserify": "^6.3.3",
+    "browserify-middleware": "^4.1.0",
     "commander": "^2.5.0",
     "compression": "^1.2.1",
     "config": "^1.8.1",
@@ -39,7 +41,9 @@
     "es6-promise": "^2.0.0",
     "express": "^4.9.8",
     "gzip-size": "^1.0.0",
+    "highcharts-browserify": "git+https://github.com/kaelig/highcharts-browserify.git#master",
     "jade": "^1.6.0",
+    "jquery": "^2.1.1",
     "lem": "^0.4.8",
     "level": "^0.18.0",
     "leveldown": "^0.10.2",

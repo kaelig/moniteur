@@ -4,7 +4,12 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header.l-header
+      .l-container
+        h1= title
     block content
-    footer
-      a(href='http://git.io/moniteur') Contribute on GitHub
-      a(href='https://github.com/kaelig/moniteur/issues') Feedback
+    footer.l-footer
+      .l-container
+        a(href='http://git.io/moniteur') Contribute on GitHub
+        a(href='https://github.com/kaelig/moniteur/issues') Feedback
+    script(src='/js/app.js')

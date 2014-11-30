@@ -1,3 +1,4 @@
+var browserify = require('browserify-middleware');
 var express = require('express');
 var debug = require('debug');
 var log = debug('app:log');
@@ -15,8 +16,10 @@ module.exports = function(config, db) {
   app.locals.db = db;
   log(app.locals.config);
 
-  var compress = require('compression');
-  app.use(compress());
+  if (process.env.NODE_ENV !== 'development') {
+    var compress = require('compression');
+    app.use(compress());
+  }
 
   app.use(function(req, res, next) {
     res.locals.config = app.locals.config;
@@ -35,6 +38,8 @@ module.exports = function(config, db) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
+
+  app.use('/js', browserify('./public/javascripts'));
 
   app.use('/', require('./routes/index'));
   app.use('/metrics', require('./routes/metrics'));
