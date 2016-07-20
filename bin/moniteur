@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
+require('babel-core/register');
+require('babel-polyfill');
+
 var debug = require('debug');
 var log = debug('moniteur:log');
 var program = require('commander');
-var Promise = require('es6-promise').Promise;
 
 var config = require('../lib/config');
 var db = require('../lib/db');
@@ -20,7 +22,7 @@ program
   .command('record'/*, 'record a snapshot of all asset metrics'*/)
   .action(function() {
     config = config(program.config);
-    var Record = require('../').record;
+    var Record = require('../server').record;
     var record = new Record(
       config,
       db(config.db)

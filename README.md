@@ -118,7 +118,7 @@ Takes a snapshot of asset metrics and stores them in the `.moniteur/`
 directory.
 
 ```bash
-moniteur record --config ../test/fixtures/test-config.json
+moniteur record --config ./fixtures/test-config.json
 ```
 
 

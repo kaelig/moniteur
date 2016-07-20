@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "babel-middleware": {
+      "version": "0.3.4",
+      "from": "babel-middleware@0.3.4",
+      "dependencies": {
+        "babel-core": {
+          "version": "6.10.4",
+          "babel-core": "^5.8.34"
+        }
+      }
+    },
+    "lem": {
+      "version": "0.4.8",
+      "from": "lem@0.4.8",
+      "dependencies": {
+        "level": {
+          "version": "1.4.0",
+          "level": "~0.18.0"
+        }
+      }
+    }
+  }
+}

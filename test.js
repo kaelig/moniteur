@@ -1,4 +1,6 @@
-{
+var _ = require('lodash')
+var md5 = require('md5')
+const allAssets = {
   "assets": {
     "FT desktop CSS bundle": [
       "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
@@ -9,15 +11,22 @@
       "http://assets.guim.co.uk/stylesheets/global.css",
       "http://assets.guim.co.uk/stylesheets/head.default.css"
     ],
-    "Main CSS": "test/fixtures/main.css",
-    "Another CSS": "test/fixtures/main2.css",
-    "ABC Script": "test/fixtures/abc.js",
-    "My XYZ Script": "test/fixtures/xyz.js",
+    "Main CSS": "fixtures/main.css",
+    "Another CSS": "fixtures/main2.css",
+    "ABC Script": "fixtures/abc.js",
+    "My XYZ Script": "fixtures/xyz.js",
     "My Bundle of Scripts": [
-      "test/fixtures/abc.js",
-      "test/fixtures/xyz.js",
-      "test/fixtures/abc.js"
+      "fixtures/abc.js",
+      "fixtures/xyz.js"
     ],
     "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
   }
-}
+};
+
+const hashAssets = (assets) => {
+  return _.mapKeys(assets.assets, (value, key) => {
+    return md5(key)
+  })
+};
+
+console.log(hashAssets(allAssets))

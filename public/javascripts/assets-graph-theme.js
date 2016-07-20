@@ -5,13 +5,15 @@
  * @author Torstein Honsi
  */
 
+var Highcharts = require('highcharts')
+
 Highcharts.theme = {
-  colors: ["#2b908f", "#90ee7e", "#f45b5b", "rgba(119, 152, 192, .33)", "rgba(170, 238, 238, .33)", "#ff0066", "#eeaaee",
-    "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+  colors: ['#2b908f', '#90ee7e', '#f45b5b', 'rgba(119, 152, 192, .33)', 'rgba(170, 238, 238, .33)', '#ff0066', '#eeaaee',
+    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
   chart: {
     backgroundColor: '#2a2a2b',
     style: {
-      fontFamily: "sans-serif"
+      fontFamily: 'sans-serif'
     },
     plotBorderColor: '#606063'
   },
@@ -220,7 +222,7 @@ Highcharts.theme = {
   textColor: '#C0C0C0',
   contrastTextColor: '#F0F0F3',
   maskColor: 'rgba(255,255,255,0.3)'
-};
+}
 
 // Apply the theme
-Highcharts.setOptions(Highcharts.theme);
+Highcharts.setOptions(Highcharts.theme)
