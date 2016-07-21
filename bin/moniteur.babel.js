@@ -34,7 +34,7 @@ program
   .command('serve'/*, 'see assets sensor graphs in the browser'*/)
   .action(function () {
     config = config(program.config)
-    var app = require('../server')(config, db(config.db))
+    var app = require('../server.babel')(config, db(config.db))
 
     app.set('port', process.env.PORT || 3000)
 
