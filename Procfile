@@ -1,2 +1,1 @@
-web: ./bin/moniteur serve
-worker: npm start
+web: npm start
