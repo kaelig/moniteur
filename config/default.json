@@ -18,5 +18,15 @@
       "fixtures/xyz.js"
     ],
     "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
+  },
+  "db": {
+    "development": {
+      "engine": "filesystem",
+      "directory": ".moniteur"
+    },
+    "production": {
+      "engine": "redis",
+      "url": "redis://localhost:6379"
+    }
   }
 }
