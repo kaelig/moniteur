@@ -1,7 +1,6 @@
-const fs = require('fs')
-var md5 = require('md5')
 var $ = require('jquery')
 var Highcharts = require('highcharts')
+require('highcharts/modules/exporting')(Highcharts)
 require('./assets-graph-theme')
 var prettyBytes = require('pretty-bytes')
 
@@ -34,37 +33,39 @@ function graphStylesheets () {
       lastSize = sizes[sizes.length - 1][1]
       setTrend(assetHash, firstSize, lastSize)
 
-      Highcharts.Chart({
-        chart: {
-          type: 'spline',
-          renderTo: 'js-asset-chart-' + assetHash
-        },
-        yAxis: [
-          {
-            title: {
-              text: 'Size'
-            },
-            labels: {
-              formatter: function () {
-                return prettyBytes(this.value)
+      Highcharts.chart(
+        'js-asset-chart-' + assetHash,
+        {
+          chart: {
+            type: 'spline'
+          },
+          yAxis: [
+            {
+              title: {
+                text: 'Size'
+              },
+              labels: {
+                formatter: function () {
+                  return prettyBytes(this.value)
+                }
               }
+            },
+            {
+              title: {
+                text: 'Count'
+              },
+              opposite: true
+            }
+          ],
+          tooltip: {
+            crosshairs: [false, true],
+            formatter: function () {
+              return '<b>' + this.series.name + '</b><br />' + Highcharts.dateFormat('%b %e, %H:%M', this.x) + ': <b>' + (this.series.type === 'area' ? prettyBytes(this.y) : this.y) + '</b>'
             }
           },
-          {
-            title: {
-              text: 'Count'
-            },
-            opposite: true
-          }
-        ],
-        tooltip: {
-          crosshairs: [false, true],
-          formatter: function () {
-            return '<b>' + this.series.name + '</b><br />' + Highcharts.dateFormat('%b %e, %H:%M', this.x) + ': <b>' + (this.series.type === 'area' ? prettyBytes(this.y) : this.y) + '</b>'
-          }
-        },
-        series: series
-      })
+          series: series
+        }
+      )
     })
   })
 }
