@@ -39,8 +39,15 @@ program
     app.set('port', process.env.PORT || 3000)
 
     var server = app.listen(app.get('port'), function () {
-      debug('Express server listening on port ' + server.address().port)
+      console.log('Express server listening on port ' + server.address().port)
     })
+  })
+
+program
+  .command('showconfig'/*, 'return the full config'*/)
+  .action(function () {
+    config = config(program.config)
+    return console.log(config)
   })
 
 program.parse(process.argv)
