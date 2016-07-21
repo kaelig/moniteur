@@ -1,18 +1,22 @@
 {
   "assets": {
-    "Screen styles": "stylesheets/screen.css",
-    "Print styles": "stylesheets/print.css",
-    "Main bundle": "javascripts/bundle.min.js",
-    "Source": "javascripts/app.src.js"
-  },
-  "db": {
-    "development": {
-      "engine": "filesystem",
-      "directory": ".moniteur"
-    },
-    "production": {
-      "engine": "redis",
-      "url": "redis://localhost:6379"
-    }
+    "FT desktop CSS bundle": [
+      "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
+      "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
+      "http://s1.ft-static.com/m/style/5c37627a/bundles/nonArticle.css"
+    ],
+    "Guardian's CSS": [
+      "http://assets.guim.co.uk/stylesheets/global.css",
+      "http://assets.guim.co.uk/stylesheets/head.default.css"
+    ],
+    "Main CSS": "fixtures/main.css",
+    "Another CSS": "fixtures/main2.css",
+    "ABC Script": "fixtures/abc.js",
+    "My XYZ Script": "fixtures/xyz.js",
+    "My Bundle of Scripts": [
+      "fixtures/abc.js",
+      "fixtures/xyz.js"
+    ],
+    "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
   }
 }
