@@ -40,6 +40,9 @@ program
 
     var server = app.listen(app.get('port'), function () {
       console.log('Express server listening on port ' + server.address().port)
+      if (app.get('env') === 'development') {
+        console.log('Open http://localhost:' + server.address().port)
+      }
     })
   })
 
