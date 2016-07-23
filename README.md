@@ -94,12 +94,12 @@ A confidential Redis URL can be passed through an environment variable,
 instead of having it stored in the configuration file:
 
 ```
-DB_URL=redis://rediscloud:XXXX@pub-redis-XXXX.us-east-X-X.X.ec2.garantiadata.com:13714
+REDIS_URL=redis://rediscloud:XXXX@pub-redis-XXXX.us-east-X-X.X.ec2.garantiadata.com:13714
 ```
 
 Run your application like this:
 ```
-DB_URL=redis://url moniteur [options]
+REDIS_URL=redis://url moniteur [options]
 ```
 
 ### Development
