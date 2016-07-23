@@ -18,7 +18,6 @@ describe('read', () => {
   })
 })
 
-
 describe('assetType', () => {
   it('returns the correct type', () => {
     expect(utils.getAssetType('/path/something.css')).toEqual('css')

@@ -22,7 +22,7 @@ program
       db(config.db)
     )
 
-    var recorders = record.init()
+    record.init()
 
     Promise.all(record.recordDataPoints()).then(function (data) {
       log('DataPoints:', JSON.stringify(data, null, 4))
