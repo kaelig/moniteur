@@ -12,7 +12,7 @@ This is my first Node app, I know it is messy and it still lacks proper tests. F
 
 On Heroku:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 As a command line utility:
 
