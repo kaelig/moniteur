@@ -75,7 +75,6 @@ program
 
     return Promise.all(record.recordDataPoints()).then((data) => {
       log('DataPoints:', JSON.stringify(data, null, 4))
-      return process.exit(0)
     }, (reason) => console.log(reason))
   })
 
