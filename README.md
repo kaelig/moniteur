@@ -2,20 +2,19 @@
 
 Monitor your asset size over time, in your browser, or using the provided HTTP API.
 
-**[Demo](https://moniteur.herokuapp.com/)**: collecting data every week.
+**[Demo](https://moniteur.herokuapp.com/)**: collecting data every day
 
-This is my first Node app, I know it is messy and it still lacks tests.
-
-More features to come: [see roadmap](#roadmap).
+This is my first Node app, I know it is messy and it still lacks proper tests. Feedback is welcome!
 
 ![ ](https://cdn.rawgit.com/kaelig/moniteur/master/docs/screenshot.png)
 
-### Installation
+## Installation
 
 On Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+As a command line utility:
 
 ```bash
 npm install -g moniteur
@@ -38,7 +37,6 @@ Options:
 
   -h, --help     output usage information
   -V, --version  output the version number
-  -c, --config   set config path
 ```
 
 Edit the `.moniteurrc.yml` file in the current directory.
@@ -53,13 +51,15 @@ A confidential Redis URL can be passed through an environment variable,
 instead of having it stored in the configuration file:
 
 ```
-REDIS_URL=redis://rediscloud:XXXX@pub-redis-XXXX.us-east-X-X.X.ec2.garantiadata.com:13714
+DB__REDIS_URL=redis://rediscloud:XXXX@pub-redis-XXXX.us-east-X-X.X.ec2.garantiadata.com:13714
 ```
 
 Run your application like this:
 ```
-REDIS_URL=redis://url moniteur [options]
+DB__REDIS_URL=redis://url moniteur [options]
 ```
+
+Note that `REDIS_URL` and `REDISCLOUD_URL` are also valid environment variables.
 
 ### Development
 
@@ -71,7 +71,7 @@ npm run dev
 
 ## Asset monitor API
 
-#### Record data
+### Record data
 
 Takes a snapshot of asset metrics and stores them in the `.moniteur/`
 directory.
@@ -81,9 +81,9 @@ moniteur record
 ```
 
 
-### HTTP API
+## HTTP API
 
-#### View current configuration
+### View current configuration
 
 `/config`
 
@@ -117,10 +117,6 @@ a great source of inspiration.
 
 ### Ideas
 
-- [ ] `moniteur init`, a moniteur.json configuration file generator, with
-  interactive menus
 - [ ] Asset size budget limits
 - [ ] Email alert when budget is almost reached or exceeded
 - [ ] Weekly email recaps
-- [ ] UA switch to fetch remote assets for mobile/tablet/desktop
-

@@ -118,7 +118,7 @@ program
     app.use('/config', (req, res, next) => {
       res.type('application/json')
       // Conceal database configuration settings from the public
-      const publicConfig = Reflect.deleteProperty(res.locals.config, 'db')
+      const publicConfig = res.locals.assets
 
       res.send(JSON.stringify(publicConfig, null, 2))
     })

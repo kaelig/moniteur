@@ -37,7 +37,8 @@
   "scripts": {
     "test": "jest",
     "start": "./bin/moniteur serve",
-    "dev": "DEBUG=moniteur:* nodemon -e js,pug,html,css,json ./bin/moniteur serve --config .moniteurrc.development.yml",
+    "record": "./bin/moniteur record",
+    "dev": "DEBUG=moniteur:* nodemon -e js,pug,html,css,json ./bin/moniteur serve",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' . --ext .js,.jsx"
   },
   "dependencies": {
