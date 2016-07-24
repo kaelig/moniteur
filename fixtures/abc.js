@@ -1,1 +1,2 @@
-a.js
+var foo = 'bar'
+export default foo

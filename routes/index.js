@@ -1,18 +1,15 @@
-var _ = require('lodash')
-var express = require('express')
-var md5 = require('md5')
-var router = express.Router()
-var utils = require('../lib/utils')
+import express from 'express'
+import utils from '../lib/utils'
 
-router.get('/', function (req, res) {
-  var assets = _.map(_.keys(res.locals.config.assets), function (asset) {
-    return {
+const router = express.Router()
+
+export default router.get('/', function (req, res) {
+  const assets = Object.keys(res.locals.config.assets).map((asset) =>
+    ({
       name: asset,
-      hash: md5(asset),
+      hash: utils.getAssetHash(asset),
       type: utils.getAssetType(res.locals.config.assets[asset])
-    }
-  })
+    })
+  )
   res.render('index', { title: 'moniteur', assets: assets })
 })
-
-module.exports = router

@@ -1,7 +1,6 @@
 # moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur) [![NPM version](https://badge.fury.io/js/moniteur.svg)](http://badge.fury.io/js/moniteur)
 
-Monitor your asset size over time, in your browser,
-or using the provided HTTP API.
+Monitor your asset size over time, in your browser, or using the provided HTTP API.
 
 **[Demo](https://moniteur.herokuapp.com/)**: collecting data every week.
 

@@ -1,0 +1,30 @@
+{
+  "name": "Moniteur",
+  "description": "Monitor your asset size over time, in your browser, or using the provided HTTP API.",
+  "keywords": [
+    "performance",
+    "tracking"
+  ],
+  "website": "http://moniteur.herokuapp.com/",
+  "repository": "https://github.com/kaelig/moniteur",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "./bin/moniteur record"
+  },
+  "env": {
+    "REDIS_URL": {
+      "description": "URL pointing to your Redis instance",
+      "value": "redis://localhost:6379",
+      "required": true
+    },
+    "ASSETS": {
+      "description": "Assets to track, separated by commas (alternatively, use the configuration files)",
+      "value": "http://list,http://of,http://assets",
+      "required": false
+    }
+  },
+  "addons": [
+    "rediscloud",
+    "scheduler:standard"
+  ]
+}

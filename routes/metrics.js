@@ -1,34 +1,25 @@
-/* jshint -W079 */
-var _ = require('lodash')
-var express = require('express')
-var router = express.Router()
+import express from 'express'
 import Read from '../lib/read'
-var debug = require('debug')
-var log = debug('moniteur:log')
+import debug from 'debug'
+
+const router = express.Router()
+const log = debug('moniteur:log')
+
+// TODO: Use params
 
 // Example:
 // Series (since forever): /metrics/css/adf6e9c154cb57a818f7fb407085bff6
 // Series between two dates: /metrics/css/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475
-
-router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function (req, res) {
-  var asset = req.params[1]
-  var options = {
-    type: req.params[0],
-    start: req.params[3] || 0,
-    end: req.params[4] || 0
-  }
+export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function (req, res) {
+  const assetType = req.params[0]
+  const assetHash = req.params[1]
+  const start = req.params[3] || false
+  const end = req.params[4] || false
 
   res.type('application/json')
-  var read = new Read([asset], _.defaults(options, res.locals.config), res.locals.db)
-  var assetData = read.getMetrics(asset)
-  log('foo', JSON.stringify(assetData, null, 2))
+  const read = new Read(assetType, assetHash, start, end, res.locals.assets, res.locals.db)
 
-  Promise.all(assetData).then(function (data) {
-    res.send(
-      JSON.stringify(data, null, 4)
-    )
-  }, reason => log(reason))
-
+  Promise.all(read.getMetrics()).then(function (data) {
+    res.send(JSON.stringify(data, null, 4))
+  }, (reason) => log(reason))
 })
-
-module.exports = router

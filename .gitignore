@@ -3,5 +3,5 @@ node_modules
 .DS_Store
 .moniteur
 bower_components
-/moniteur/* # local database
+/.moniteurdb/* # local database
 .vscode
