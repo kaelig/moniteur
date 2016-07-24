@@ -26,51 +26,24 @@ npm install -g moniteur
 ```bash
 Usage: moniteur [options] [command]
 
+
 Commands:
 
-  record   grab a snapshot of all asset metrics
-  serve    see assets sensor graphs in the browser
+  record   record a snapshot of all asset metrics
+  serve    start the server to show metrics in the browser
+  assets   display the list of assets loaded by moniteur
+  help     display this helpful message
 
 Options:
 
-  -h, --help           output usage information
-  -V, --version        output the version number
-  -c, --config [path]  specify a configuration file
+  -h, --help     output usage information
+  -V, --version  output the version number
+  -c, --config   set config path
 ```
 
-Create a `moniteur.json` file in the directory where asset sizes
-should be stored (typically: the root directory of your project):
-
-```json
-{
-  "assets": {
-    "My main CSS": "public/stylesheets/main.css",
-    "My bundle of CSS files": [
-      "core.css",
-      "head.css",
-      "index.css",
-      "global.css"
-    ],
-    "Remote stylesheet": "http://path/to/styles.css",
-    "Remote JavaScript": "http://path/to/styles.js",
-    "Single JavaScript file": "public/javascripts/app.js",
-    "Bundle of JavaScript files": [
-      "module-a.js",
-      "module-b.js",
-      "module-c.js",
-      "dependency.js"
-    ]
-  }
-}
-```
-
-Note: `moniteur` will load `moniteur.json` file in your home directory
-or the current directory.
-
+Edit the `.moniteurrc.yml` file in the current directory.
 
 ### Database configuration
-
-TODO
 
 For now, two types of storage are supported: Redis and local filesystem.
 

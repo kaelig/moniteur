@@ -1,7 +1,7 @@
 node_modules
 *.log
 .DS_Store
-.moniteur
 bower_components
 .moniteurdb # local database
 .vscode
+.moniteurdb

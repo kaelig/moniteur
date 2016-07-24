@@ -25,17 +25,26 @@ nconf
     separator: '__',
     lowerCase: true
   })
-  .argv()
+  .argv({
+    'c': {
+      alias: 'config',
+      describe: 'set config path'
+    }
+  })
+
+if (process.env.REDIS_URL) {
+  nconf.set('db:redis_url', process.env.REDIS_URL)
+}
 
 if (process.env.NODE_ENV !== 'production') {
-  nconf.file('development', { file: './.moniteurrc.development.yml', format: nconf.formats.yaml })
+  nconf.file('override', { file: './.moniteurrc.development.yml', format: nconf.formats.yaml })
 }
-// if (program.options('config')) {
-//   nconf.file('development', { file: program.options('config'), format: nconf.formats.yaml })
-// }
-
-nconf.file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
-nconf.file('defaults', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
+if (nconf.get('config')) {
+  nconf.file('override', { file: nconf.get('config'), format: nconf.formats.yaml })
+}
+nconf
+  .file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
+  .file('default', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
 
 program
   .command('record')
@@ -135,8 +144,8 @@ program
   })
 
 program
-  .command('showconfig')
-  .description('display the currently available config')
+  .command('assets')
+  .description('display the list of assets loaded by moniteur')
   .action(() => {
     return console.log(nconf.get('assets'))
   })
