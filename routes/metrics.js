@@ -20,14 +20,16 @@ router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function (req, res) {
 
   res.type('application/json')
   var read = new Read([asset], _.defaults(options, res.locals.config), res.locals.db)
-  log('foo', JSON.stringify(read, null, 2))
   var assetData = read.getMetrics(asset)
+  log('foo', JSON.stringify(assetData, null, 2))
 
   Promise.all(assetData).then(function (data) {
+    log('INSTANCE', res.locals.db.options.db.close)
     res.send(
       JSON.stringify(data, null, 4)
     )
-  })
+  }, reason => log(reason))
+
 })
 
 module.exports = router

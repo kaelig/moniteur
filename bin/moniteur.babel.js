@@ -17,15 +17,17 @@ program
   .command('record'/*, 'record a snapshot of all asset metrics'*/)
   .action(function () {
     config = config(program.config)
+    var dbinstance = db(config.db)
     var record = new Record(
       config,
-      db(config.db)
+      dbinstance
     )
 
     record.init()
 
     Promise.all(record.recordDataPoints()).then(function (data) {
       log('DataPoints:', JSON.stringify(data, null, 4))
+      dbinstance.close()
       process.exit(0)
     })
   })

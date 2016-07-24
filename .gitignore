@@ -4,3 +4,4 @@ node_modules
 .moniteur
 bower_components
 /moniteur/* # local database
+.vscode

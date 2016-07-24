@@ -1,5 +1,6 @@
 {
   "assets": {
+    "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js",
     "FT desktop CSS bundle": [
       "http://s1.ft-static.com/m/style/90975546/bundles/core.css",
       "http://navigation.webservices.ft.com/v1/navigation/ft/css/style.min.css",
@@ -16,13 +17,12 @@
     "My Bundle of Scripts": [
       "fixtures/abc.js",
       "fixtures/xyz.js"
-    ],
-    "A remote Script": "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
+    ]
   },
   "db": {
     "development": {
-      "engine": "filesystem",
-      "directory": ".moniteur"
+      "engine": "redis",
+      "url": "redis://localhost:6379"
     },
     "production": {
       "engine": "redis",
