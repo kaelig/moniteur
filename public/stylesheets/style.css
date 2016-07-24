@@ -39,9 +39,13 @@ a:focus {
 
 .l-header,
 .l-footer {
+  background: rgba(0, 0, 0, .3);
+}
+.l-header,
+.l-footer,
+.l-content {
   margin: 0;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, .3);
 }
 h1 {
   margin: 0;
@@ -111,4 +115,18 @@ h1 {
 }
 .trend--up {
   background: #99222F;
+}
+
+.table {
+  text-align: left;
+}
+.table th,
+.table td {
+  padding: .5em 1em;
+  vertical-align: top;
+}
+
+.table tbody th,
+.table tbody td {
+  border-top: 1px solid rgba(255, 255, 255, .1);
 }

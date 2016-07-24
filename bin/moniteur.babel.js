@@ -114,6 +114,7 @@ program
     app.use('/js', babelify(path.join(__dirname, '../public/javascripts')))
 
     app.use('/', require('../routes/index').default)
+    app.use('/welcome', require('../routes/welcome').default)
     app.use('/metrics', require('../routes/metrics').default)
     app.use('/assets', (req, res, next) => {
       res.type('application/json')

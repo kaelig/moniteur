@@ -7,9 +7,9 @@
   ],
   "website": "http://moniteur.herokuapp.com/",
   "repository": "https://github.com/kaelig/moniteur",
-  "success_url": "/",
+  "success_url": "/welcome",
   "scripts": {
-    "postdeploy": "./bin/moniteur record"
+    "postdeploy": "npm run record"
   },
   "env": {
     "ASSETS": {
