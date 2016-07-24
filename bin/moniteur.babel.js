@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import debug from 'debug'
 import program from 'commander'
 import db from '../lib/db'
@@ -16,6 +14,14 @@ nconf.formats.yaml = require('nconf-yaml')
 
 const log = debug('moniteur:log')
 
+// Transform:
+// http://foo.com/asset.js,http://bar.com/asset.js
+// Into:
+// {
+//   http://foo.com/asset.js: "http://foo.com/asset.js",
+//   http://bar.com/asset.js: "http://bar.com/asset.js"
+// }
+
 program
   .version(require('../package.json').version)
   .option('-c, --config', 'set config path')
@@ -23,7 +29,8 @@ program
 nconf
   .env({
     separator: '__',
-    lowerCase: true
+    lowerCase: true,
+    whitelist: ['redis_url']
   })
   .argv({
     'c': {
@@ -42,9 +49,19 @@ if (process.env.NODE_ENV !== 'production') {
 if (nconf.get('config')) {
   nconf.file('override', { file: nconf.get('config'), format: nconf.formats.yaml })
 }
+
 nconf
   .file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
   .file('default', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
+
+if (process.env.ASSETS) {
+  nconf.clear('assets')
+  nconf.set('assets', process.env.ASSETS.split(',').reduce((assets, asset) => {
+    const [key, ...url] = asset.split(':')
+    assets[key] = url.join('')
+    return assets
+  }, {}))
+}
 
 program
   .command('record')
