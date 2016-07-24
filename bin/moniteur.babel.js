@@ -18,14 +18,14 @@ program
   .version(require('../package.json').version)
 
 // Possible values on Heroku
-process.env.DB__REDIS_URL = process.env.REDIS_URL || null
 process.env.DB__REDIS_URL = process.env.REDISCLOUD_URL || null
+process.env.DB__REDIS_URL = process.env.REDIS_URL || null
 
 nconf
   .env({
     separator: '__',
     lowerCase: true,
-    whitelist: ['REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'REDISCLOUD_URL', 'ASSETS']
+    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'ASSETS']
   })
   .argv()
 
