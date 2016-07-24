@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser'
 import express from 'express'
 import babelify from 'express-babelify-middleware'
 import path from 'path'
+import lem from 'lem'
 import logger from 'morgan'
 nconf.formats.yaml = require('nconf-yaml')
 
@@ -16,10 +17,6 @@ const log = debug('moniteur:log')
 
 program
   .version(require('../package.json').version)
-
-// Possible values on Heroku
-process.env.DB__REDIS_URL = process.env.REDISCLOUD_URL || null
-process.env.DB__REDIS_URL = process.env.REDIS_URL || null
 
 nconf
   .env({
@@ -61,7 +58,11 @@ const processAssets = (assetList) =>
 nconf
   .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : nconf.get('assets'))
 nconf
-  .set('db:redis_url', process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://') : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://') : null))
+  .set('db:redis_url',
+    process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://')
+    : (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.replace(/redis\/\//, 'redis://')
+      : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://')
+        : null)))
 
 program
   .command('record')
@@ -69,12 +70,14 @@ program
   .action((cmd, env) => {
     log(nconf.get('assets'))
     log(nconf.get('db'))
+    const dbinstance = db(nconf.get('db'))
 
-    const record = new Record(nconf.get('assets'), db(nconf.get('db')))
-    record.init()
-
-    return Promise.all(record.recordDataPoints()).then((data) => {
-      log('DataPoints:', JSON.stringify(data, null, 4))
+    const record = new Record(nconf.get('assets'), lem(dbinstance))
+    return Promise.all(record.init()).then((data) => {
+      return Promise.all(record.recordDataPoints()).then((data) => {
+        dbinstance.close()
+        return log('DataPoints:', JSON.stringify(data, null, 4))
+      }, (reason) => console.log(reason))
     }, (reason) => console.log(reason))
   })
 
