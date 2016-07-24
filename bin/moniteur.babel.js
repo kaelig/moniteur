@@ -14,14 +14,6 @@ nconf.formats.yaml = require('nconf-yaml')
 
 const log = debug('moniteur:log')
 
-// Transform:
-// http://foo.com/asset.js,http://bar.com/asset.js
-// Into:
-// {
-//   http://foo.com/asset.js: "http://foo.com/asset.js",
-//   http://bar.com/asset.js: "http://bar.com/asset.js"
-// }
-
 program
   .version(require('../package.json').version)
   .option('-c, --config', 'set config path')
@@ -54,11 +46,22 @@ nconf
   .file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
   .file('default', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
 
+
+// Transform:
+// http://foo.com/asset.js,http://bar.com/asset.js
+// Into:
+// {
+//   http://foo.com/asset.js: "http://foo.com/asset.js",
+//   http://bar.com/asset.js: "http://bar.com/asset.js"
+// }
 if (process.env.ASSETS) {
   nconf.clear('assets')
   nconf.set('assets', process.env.ASSETS.split(',').reduce((assets, asset) => {
     const [key, ...url] = asset.split(':')
     assets[key] = url.join('')
+      // Semicolons are considered as separators by nconf
+      // So they're stripped from URLs
+      .replace(/http(s?)\/\//, 'http$1://')
     return assets
   }, {}))
 }
@@ -67,12 +70,13 @@ program
   .command('record')
   .description('record a snapshot of all asset metrics')
   .action((cmd, env) => {
+    log(nconf.get('assets'))
     const record = new Record(nconf.get('assets'), db(nconf.get('db')))
     record.init()
 
-    Promise.all(record.recordDataPoints()).then(function (data) {
+    Promise.all(record.recordDataPoints()).then((data) => {
       log('DataPoints:', JSON.stringify(data, null, 4))
-    })
+    }, (reason) => console.log(reason))
   })
 
 program
