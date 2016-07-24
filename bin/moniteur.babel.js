@@ -27,8 +27,7 @@ program
 
     Promise.all(record.recordDataPoints()).then(function (data) {
       log('DataPoints:', JSON.stringify(data, null, 4))
-      dbinstance.close()
-      process.exit(0)
+      return dbinstance.close()
     })
   })
 

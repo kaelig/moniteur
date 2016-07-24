@@ -24,7 +24,6 @@ router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, function (req, res) {
   log('foo', JSON.stringify(assetData, null, 2))
 
   Promise.all(assetData).then(function (data) {
-    log('INSTANCE', res.locals.db.options.db.close)
     res.send(
       JSON.stringify(data, null, 4)
     )
