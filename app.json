@@ -14,7 +14,7 @@
   "env": {
     "ASSETS": {
       "description": "Assets to track, separated by commas (alternatively, use the configuration files)",
-      "value": "Asset One:http://list,\nAsset Two:http://of,http://assets",
+      "value": "CSS:http://mydomain.com/path/to/styles.css,\nJavaScript:http://mydomain.com/path/to/app.js",
       "required": false
     }
   },
