@@ -38,8 +38,6 @@ nconf.file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
 nconf.file('defaults', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
 
 program
-  // TODO: Uncomment description when issue https://github.com/tj/commander.js/issues/285
-  // is merged via https://github.com/tj/commander.js/pull/286
   .command('record')
   .description('record a snapshot of all asset metrics')
   .action((cmd, env) => {

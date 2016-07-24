@@ -5,8 +5,6 @@ import debug from 'debug'
 const router = express.Router()
 const log = debug('moniteur:log')
 
-// TODO: Use params
-
 // Example:
 // Series (since forever): /metrics/css/adf6e9c154cb57a818f7fb407085bff6
 // Series between two dates: /metrics/css/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475

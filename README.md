@@ -12,6 +12,11 @@ More features to come: [see roadmap](#roadmap).
 
 ### Installation
 
+On Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
 ```bash
 npm install -g moniteur
 ```
@@ -65,25 +70,7 @@ or the current directory.
 
 ### Database configuration
 
-Moniteur relies on the `NODE_ENV` environment variable to select a database:
-
-```json
-{
-  "assets": {
-    // Stylesheets, scripts…
-  },
-  "db": {
-    "development": {
-      "engine": "filesystem",
-      "directory": ".moniteur"
-    },
-    "production": {
-      "engine": "redis",
-      "url": "redis://localhost:6379"
-    }
-  }
-}
-```
+TODO
 
 For now, two types of storage are supported: Redis and local filesystem.
 
@@ -117,7 +104,7 @@ Takes a snapshot of asset metrics and stores them in the `.moniteur/`
 directory.
 
 ```bash
-moniteur record --config ./fixtures/test-config.json
+moniteur record
 ```
 
 
