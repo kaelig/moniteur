@@ -13,39 +13,7 @@ import logger from 'morgan'
 nconf.formats.yaml = require('nconf-yaml')
 
 const log = debug('moniteur:log')
-
-program
-  .version(require('../package.json').version)
-  .option('-c, --config', 'set config path')
-
-nconf
-  .env({
-    separator: '__',
-    lowerCase: true,
-    whitelist: ['redis_url']
-  })
-  .argv({
-    'c': {
-      alias: 'config',
-      describe: 'set config path'
-    }
-  })
-
-if (process.env.REDIS_URL) {
-  nconf.set('db:redis_url', process.env.REDIS_URL)
-}
-
-if (process.env.NODE_ENV !== 'production') {
-  nconf.file('override', { file: './.moniteurrc.development.yml', format: nconf.formats.yaml })
-}
-if (nconf.get('config')) {
-  nconf.file('override', { file: nconf.get('config'), format: nconf.formats.yaml })
-}
-
-nconf
-  .file('user', { file: './.moniteurrc.yml', format: nconf.formats.yaml })
-  .file('default', { file: './.moniteurrc.defaults.yml', format: nconf.formats.yaml })
-
+log(process.env.NODE_ENV)
 
 // Transform:
 // http://foo.com/asset.js,http://bar.com/asset.js
@@ -54,16 +22,35 @@ nconf
 //   http://foo.com/asset.js: "http://foo.com/asset.js",
 //   http://bar.com/asset.js: "http://bar.com/asset.js"
 // }
-if (process.env.ASSETS) {
-  nconf.set('assets', process.env.ASSETS.split(',').reduce((assets, asset) => {
+const processAssets = (assetList) =>
+  assetList.split(',').reduce((assets, asset) => {
     const [key, ...url] = asset.split(':')
     assets[key] = url.join('')
       // Semicolons are considered as separators by nconf
       // So they're stripped from URLs
       .replace(/http(s?)\/\//, 'http$1://')
     return assets
-  }, {}))
-}
+  }, {})
+
+program
+  .version(require('../package.json').version)
+
+nconf
+  .env({
+    separator: '__',
+    lowerCase: true,
+    whitelist: ['REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'ASSETS']
+  })
+  .argv()
+
+nconf
+  .file('development', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
+  .file('user', { file: path.join(__dirname, '/../.moniteurrc.yml'), format: nconf.formats.yaml })
+  .file('default', { file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
+
+nconf
+  .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : null)
+
 
 program
   .command('record')
