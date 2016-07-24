@@ -3,7 +3,7 @@ import utils from '../lib/utils'
 
 const router = express.Router()
 
-export default router.get('/', function (req, res) {
+export default router.get('/', (req, res) => {
   const assets = Object.keys(res.locals.config.assets).map((asset) =>
     ({
       name: asset,
