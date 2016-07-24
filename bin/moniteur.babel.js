@@ -33,19 +33,26 @@ nconf
   .file('default', { file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
 
 // Transform:
-// http://foo.com/asset.js,http://bar.com/asset.js
+// foo:http://foo.com/asset.js,
+// bar:http://bar.com/asset.js
 // Into:
 // {
-//   http://foo.com/asset.js: "http://foo.com/asset.js",
-//   http://bar.com/asset.js: "http://bar.com/asset.js"
+//   foo: "http://foo.com/asset.js",
+//   bar: "http://bar.com/asset.js"
 // }
 const processAssets = (assetList) =>
-  assetList.split(',').reduce((assets, asset) => {
-    const [key, ...url] = asset.split(':')
-    assets[key] = url.join('')
-      .replace(/http(s?)\/\//, 'http$1://')
-    return assets
-  }, {})
+  assetList
+    // Remove all linebreaks that might have been inserted in
+    // the Heroku environment variables
+    .replace(/(\r\n|\n|\r)/gm, '')
+    // Then let's break this string into an array
+    // and return an object of key-value paris
+    .split(',').reduce((assets, asset) => {
+      const [key, ...url] = asset.split(':')
+      assets[key] = url.join('')
+        .replace(/http(s?)\/\//, 'http$1://')
+      return assets
+    }, {})
 
 // nconf evaluates the : in the protocol as a key:value pair
 // so we're restoring the colon in the URL protocols
