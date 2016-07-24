@@ -13,27 +13,11 @@ import logger from 'morgan'
 nconf.formats.yaml = require('nconf-yaml')
 
 const log = debug('moniteur:log')
-log(process.env.NODE_ENV)
-
-// Transform:
-// http://foo.com/asset.js,http://bar.com/asset.js
-// Into:
-// {
-//   http://foo.com/asset.js: "http://foo.com/asset.js",
-//   http://bar.com/asset.js: "http://bar.com/asset.js"
-// }
-const processAssets = (assetList) =>
-  assetList.split(',').reduce((assets, asset) => {
-    const [key, ...url] = asset.split(':')
-    assets[key] = url.join('')
-      // Semicolons are considered as separators by nconf
-      // So they're stripped from URLs
-      .replace(/http(s?)\/\//, 'http$1://')
-    return assets
-  }, {})
 
 program
   .version(require('../package.json').version)
+
+process.env.DB__REDIS_URL = process.env.REDIS_URL || null
 
 nconf
   .env({
@@ -48,15 +32,35 @@ nconf
   .file('user', { file: path.join(__dirname, '/../.moniteurrc.yml'), format: nconf.formats.yaml })
   .file('default', { file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
 
-nconf
-  .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : null)
+// Transform:
+// http://foo.com/asset.js,http://bar.com/asset.js
+// Into:
+// {
+//   http://foo.com/asset.js: "http://foo.com/asset.js",
+//   http://bar.com/asset.js: "http://bar.com/asset.js"
+// }
+const processAssets = (assetList) =>
+  assetList.split(',').reduce((assets, asset) => {
+    const [key, ...url] = asset.split(':')
+    assets[key] = url.join('')
+      .replace(/http(s?)\/\//, 'http$1://')
+    return assets
+  }, {})
 
+// nconf evaluates the : in the protocol as a key:value pair
+// so we're restoring the colon in the URL protocols
+nconf
+  .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : nconf.get('assets'))
+nconf
+  .set('db:redis_url', process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://') : nconf.get('db:redis_url').replace(/redis\/\//, 'redis://'))
 
 program
   .command('record')
   .description('record a snapshot of all asset metrics')
   .action((cmd, env) => {
     log(nconf.get('assets'))
+    log(nconf.get('db'))
+
     const record = new Record(nconf.get('assets'), db(nconf.get('db')))
     record.init()
 
