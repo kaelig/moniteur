@@ -17,7 +17,9 @@ const log = debug('moniteur:log')
 program
   .version(require('../package.json').version)
 
+// Possible values on Heroku
 process.env.DB__REDIS_URL = process.env.REDIS_URL || null
+process.env.DB__REDIS_URL = process.env.REDISCLOUD_URL || null
 
 nconf
   .env({
