@@ -25,7 +25,7 @@ nconf
   .env({
     separator: '__',
     lowerCase: true,
-    whitelist: ['REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'ASSETS']
+    whitelist: ['REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'REDISCLOUD_URL', 'ASSETS']
   })
   .argv()
 
