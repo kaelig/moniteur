@@ -115,12 +115,11 @@ program
 
     app.use('/', require('../routes/index').default)
     app.use('/metrics', require('../routes/metrics').default)
-    app.use('/config', (req, res, next) => {
+    app.use('/assets', (req, res, next) => {
       res.type('application/json')
-      // Conceal database configuration settings from the public
-      const publicConfig = res.locals.assets
 
-      res.send(JSON.stringify(publicConfig, null, 2))
+      // Conceal database configuration settings from the public
+      res.send(JSON.stringify(nconf.get('assets'), null, 2))
     })
 
     // catch 404 and forward to error handler

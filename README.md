@@ -83,9 +83,9 @@ moniteur record
 
 ## HTTP API
 
-### View current configuration
+### View a JSON representation of all loaded assets
 
-`/config`
+`/assets`
 
 #### JSON data object for HighCharts (providing the asset name's hash)
 
