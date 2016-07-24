@@ -55,7 +55,6 @@ nconf
 //   http://bar.com/asset.js: "http://bar.com/asset.js"
 // }
 if (process.env.ASSETS) {
-  nconf.clear('assets')
   nconf.set('assets', process.env.ASSETS.split(',').reduce((assets, asset) => {
     const [key, ...url] = asset.split(':')
     assets[key] = url.join('')
