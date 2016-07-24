@@ -12,14 +12,9 @@
     "postdeploy": "./bin/moniteur record"
   },
   "env": {
-    "REDIS_URL": {
-      "description": "URL pointing to your Redis instance",
-      "value": "redis://localhost:6379",
-      "required": true
-    },
     "ASSETS": {
       "description": "Assets to track, separated by commas (alternatively, use the configuration files)",
-      "value": "http://list,http://of,http://assets",
+      "value": "Asset One:http://list,\nAsset Two:http://of,http://assets",
       "required": false
     }
   },
