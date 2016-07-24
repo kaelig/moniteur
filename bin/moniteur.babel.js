@@ -59,7 +59,7 @@ const processAssets = (assetList) =>
 nconf
   .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : nconf.get('assets'))
 nconf
-  .set('db:redis_url', process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://') : nconf.get('db:redis_url').replace(/redis\/\//, 'redis://'))
+  .set('db:redis_url', process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://') : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://') : null))
 
 program
   .command('record')
@@ -71,7 +71,7 @@ program
     const record = new Record(nconf.get('assets'), db(nconf.get('db')))
     record.init()
 
-    Promise.all(record.recordDataPoints()).then((data) => {
+    return Promise.all(record.recordDataPoints()).then((data) => {
       log('DataPoints:', JSON.stringify(data, null, 4))
     }, (reason) => console.log(reason))
   })
