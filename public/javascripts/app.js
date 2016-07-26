@@ -1,13 +1,13 @@
-var $ = require('jquery')
-var Highcharts = require('highcharts')
+import $ from 'jquery'
+import Highcharts from 'highcharts'
 require('highcharts/modules/exporting')(Highcharts)
 require('./assets-graph-theme')
-var prettyBytes = require('pretty-bytes')
+import prettyBytes from 'pretty-bytes'
 
 function setTrend (assetHash, firstMetric, secondMetric) {
-  var difference = secondMetric - firstMetric
-  var trend = (difference < 0) ? 'down' : 'up'
-  var trendSign = (difference > 0) ? '+' : ''
+  const difference = secondMetric - firstMetric
+  const trend = (difference < 0) ? 'down' : 'up'
+  const trendSign = (difference > 0) ? '+' : ''
 
   const $trendElement = $('.js-trend-' + assetHash)
 
@@ -19,15 +19,15 @@ function setTrend (assetHash, firstMetric, secondMetric) {
 }
 
 function graphStylesheets () {
-  var sizes
-  var firstSize
-  var lastSize
+  let sizes
+  let firstSize
+  let lastSize
 
-  $('.js-asset').each(function (assetContainer) {
-    var assetHash = $(this).data('asset-hash')
-    var assetType = $(this).data('asset-type')
+  $('.js-asset').each(function(assetContainer) {
+    const assetHash = $(this).data('asset-hash')
+    const assetType = $(this).data('asset-type')
 
-    $.getJSON('/metrics/' + assetType + '/' + assetHash, function (series) {
+    $.getJSON('/metrics/' + assetType + '/' + assetHash, (series) => {
       sizes = series[0].data
       firstSize = sizes[0][1]
       lastSize = sizes[sizes.length - 1][1]
@@ -70,6 +70,6 @@ function graphStylesheets () {
   })
 }
 
-$(function () {
+$(() => {
   graphStylesheets()
 })
