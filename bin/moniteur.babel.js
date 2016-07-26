@@ -90,7 +90,7 @@ program
     app.use(cookieParser())
     app.use(express.static(path.join(__dirname, '../public')))
     app.use('/docs', express.static(path.join(__dirname, '../docs')))
-    app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')))
+    app.use('/jquery', express.static(path.join(__dirname, '../node_modules/jquery')))
 
     app.use('/js', babelify(path.join(__dirname, '../public/javascripts')))
 
