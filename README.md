@@ -2,7 +2,7 @@
 
 Monitor your asset size over time, in your browser, or using the provided HTTP API.
 
-**[Demo](https://moniteur.herokuapp.com/)**: collecting data every day
+**[Demo](https://moniteur.herokuapp.com/)**: collecting data hourly
 
 This is my first Node app, I know it is messy and it still lacks proper tests. Feedback is welcome!
 
@@ -39,15 +39,13 @@ Options:
   -V, --version  output the version number
 ```
 
-Edit the `.moniteurrc.yml` file in the current directory.
+Configuration: edit the `.moniteurrc.yml` file in the current directory.
 
 ### Database configuration
 
 For now, two types of storage are supported: Redis and local filesystem.
 
-#### Confidential Redis URL
-
-A confidential Redis URL can be passed through an environment variable,
+A Redis URL can be passed through an environment variable,
 instead of having it stored in the configuration file:
 
 ```

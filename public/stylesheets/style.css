@@ -54,6 +54,13 @@ a:focus {
 h1 {
   margin: 0;
 }
+h1 a {
+  text-decoration: none;
+}
+h1 a:hover,
+h1 a:focus {
+  text-decoration: underline;
+}
 
 .asset {
   box-sizing: border-box;
