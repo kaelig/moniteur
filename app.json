@@ -13,8 +13,8 @@
   },
   "env": {
     "ASSETS": {
-      "description": "Assets to track, separated by commas (alternatively, use the configuration files)",
-      "value": "CSS:http://mydomain.com/path/to/styles.css,\nJavaScript:http://mydomain.com/path/to/app.js",
+      "description": "Assets to track in YAML (alternatively, use the configuration files)",
+      "value": "Moniteur's CSS: https://moniteur.herokuapp.com/stylesheets/style.css\nMoniteur's JavaScript: https://moniteur.herokuapp.com/js/app.js",
       "required": false
     }
   },
