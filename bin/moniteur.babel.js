@@ -11,6 +11,7 @@ import babelify from 'express-babelify-middleware'
 import path from 'path'
 import lem from 'lem'
 import logger from 'morgan'
+import yaml from 'js-yaml'
 nconf.formats.yaml = require('nconf-yaml')
 
 const log = debug('moniteur:log')
@@ -22,7 +23,7 @@ nconf
   .env({
     separator: '__',
     lowerCase: true,
-    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL', 'ASSETS']
+    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL']
   })
   .argv()
 
@@ -31,32 +32,11 @@ nconf
   .file('user', { file: path.join(__dirname, '/../.moniteurrc.yml'), format: nconf.formats.yaml })
   .file('default', { file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
 
-// Transform:
-// foo:http://foo.com/asset.js,
-// bar:http://bar.com/asset.js
-// Into:
-// {
-//   foo: "http://foo.com/asset.js",
-//   bar: "http://bar.com/asset.js"
-// }
-const processAssets = (assetList) =>
-  assetList
-    // Remove all linebreaks that might have been inserted in
-    // the Heroku environment variables
-    .replace(/(\r\n|\n|\r)/gm, '')
-    // Then let's break this string into an array
-    // and return an object of key-value paris
-    .split(',').reduce((assets, asset) => {
-      const [key, ...url] = asset.split(':')
-      assets[key] = url.join('')
-        .replace(/http(s?)\/\//, 'http$1://')
-      return assets
-    }, {})
+nconf
+  .set('assets', process.env.ASSETS ? yaml.safeLoad(process.env.ASSETS) : nconf.get('assets'))
 
 // nconf evaluates the : in the protocol as a key:value pair
 // so we're restoring the colon in the URL protocols
-nconf
-  .set('assets', process.env.ASSETS ? processAssets(process.env.ASSETS) : nconf.get('assets'))
 nconf
   .set('db:redis_url',
     process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://')

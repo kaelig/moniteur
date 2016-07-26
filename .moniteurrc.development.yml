@@ -18,4 +18,3 @@ assets:
 db:
   # Uncomment to use Redis instead of the filesystem
   # redis_url: redis://localhost:6379
-  directory: ".moniteurdb"
