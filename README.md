@@ -6,7 +6,7 @@ Monitor your asset size over time, in your browser, or using the provided HTTP A
 
 This is my first Node app, I know it is messy and it still lacks proper tests. Feedback is welcome!
 
-![ ](https://cdn.rawgit.com/kaelig/moniteur/master/docs/screenshot.png)
+![ ](https://cdn.rawgit.com/kaelig/moniteur/8cc242f6fefa495a0b8746bca41f5980a76e80c7/docs/screenshot.png)
 
 ## Installation
 
