@@ -14,5 +14,5 @@ export default router.get('/', (req, res) => {
       resources: resources
     }
   })
-  res.render('assets', { title: 'moniteur: assets', assets: assets })
+  res.render('settings', { title: 'moniteur: current settings', assets: assets })
 })

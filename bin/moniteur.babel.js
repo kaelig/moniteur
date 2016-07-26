@@ -97,7 +97,7 @@ program
     app.use('/', require('../routes/index').default)
     app.use('/welcome', require('../routes/welcome').default)
     app.use('/metrics', require('../routes/metrics').default)
-    app.use('/assets', require('../routes/assets').default)
+    app.use('/settings', require('../routes/settings').default)
     app.use('/assets.json', (req, res, next) => {
       res.type('application/json')
 
