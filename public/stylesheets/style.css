@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 .l-container {
   box-sizing: border-box;
   margin: 0 auto;

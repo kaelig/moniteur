@@ -92,9 +92,7 @@ program
     app.locals.db = db(nconf.get('db'))
     log(app.locals.db)
 
-    if (process.env.NODE_ENV !== 'development') {
-      app.use(compression())
-    }
+    app.use(compression())
 
     app.use(function (req, res, next) {
       res.locals.config = app.locals.config
@@ -111,6 +109,7 @@ program
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(cookieParser())
     app.use(express.static(path.join(__dirname, '../public')))
+    app.use('/docs', express.static(path.join(__dirname, '../docs')))
     app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')))
 
     app.use('/js', babelify(path.join(__dirname, '../public/javascripts')))
