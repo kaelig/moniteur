@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .l-content
+    .l-container
+      h2 Assets
+      p These #{assets.length} assets are currently being monitored:
+      table.table
+        thead
+          tr
+            th Asset
+            th Resource(s)
+        tbody
+          each asset in assets
+            tr
+              th.table__assetname
+                a(href='/#asset-' + asset.hash)=asset.name
+              td.table__assetresources
+                - var resources = asset.resources.map(r => `<a href="${r}" target="_blank">${r}</a>`).join('<br />');
+                !=resources

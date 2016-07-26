@@ -83,7 +83,7 @@ moniteur record
 
 ### View a JSON representation of all loaded assets
 
-`/assets`
+`/assets.json`
 
 #### JSON data object for HighCharts (providing the asset name's hash)
 

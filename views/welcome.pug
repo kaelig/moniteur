@@ -3,22 +3,19 @@ extends layout
 block content
   .l-content
     .l-container
-      p The following assets are loaded:
-      table.table
-        thead
-          tr
-            th Asset
-            th Resource(s)
-        tbody
-          each asset in assets
-            tr
-              th=asset.name
-              td
-                - var resources = asset.resources.map(r => `<a href="${r}" target="_blank">${r}</a>`).join('<br />');
-                !=resources
-      h2 Scheduling data recordings
+      p Welcome to moniteur! You’re almost there…
+      h2 1. Scheduling data recordings
       img(src='docs/welcome-process/welcome-process.001.png')
       img(src='docs/welcome-process/welcome-process.002.png')
       img(src='docs/welcome-process/welcome-process.003.png')
       img(src='docs/welcome-process/welcome-process.004.png')
       img(src='docs/welcome-process/welcome-process.005.png')
+
+      h2 2. See what assets are being monitored
+      p
+        a(href='/assets') List of assets
+      p Come back tomorrow to see the graphs!
+      p Can’t wait that long? You can speed up the graph generation by executing this command using the Heroku toolbelt:
+
+      pre.code
+        code.user-select heroku run "record" -a moniteur

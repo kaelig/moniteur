@@ -97,7 +97,8 @@ program
     app.use('/', require('../routes/index').default)
     app.use('/welcome', require('../routes/welcome').default)
     app.use('/metrics', require('../routes/metrics').default)
-    app.use('/assets', (req, res, next) => {
+    app.use('/assets', require('../routes/assets').default)
+    app.use('/assets.json', (req, res, next) => {
       res.type('application/json')
 
       // Conceal database configuration settings from the public

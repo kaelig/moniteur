@@ -23,7 +23,7 @@ function graphStylesheets () {
   let firstSize
   let lastSize
 
-  $('.js-asset').each(function(assetContainer) {
+  $('.js-asset').each(function (assetContainer) {
     const assetHash = $(this).data('asset-hash')
     const assetType = $(this).data('asset-type')
 

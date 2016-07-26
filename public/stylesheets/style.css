@@ -2,7 +2,9 @@ html {
   margin: 0;
   background: #2a2a2b;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 body {
   margin: 0;
@@ -30,7 +32,7 @@ a:focus {
 .asset__linkto {
   text-decoration: none;
   opacity: 0;
-  transition: opacity .1s 0;
+  transition: opacity .5s 0;
   padding: .3em;
 }
 .asset__linkto:hover,
@@ -50,6 +52,9 @@ a:focus {
 .l-content {
   margin: 0;
   padding: 1rem 2rem;
+}
+.l-footer {
+  margin-top: 2em;
 }
 h1 {
   margin: 0;
@@ -94,7 +99,6 @@ h1 a:focus {
   letter-spacing: .15em;
   font-weight: bolder;
   font-size: 2.5em;
-  font-family: "Helvetica Neue", Arial, sans-serif;
   opacity: .07;
 }
 [data-asset-type=js] .asset__type::before {
@@ -115,11 +119,13 @@ h1 a:focus {
   margin-right: 1em;
   padding-right: 12px;
   padding-left: 12px;
-  border-radius: .3em;
+  border-radius: 4px;
   background: rgba(255, 255, 255, .1);
   font-weight: normal;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1;
+  padding: 6px 12px;
+  font-family: monospace;
 }
 .trend--down {
   background: #399914;
@@ -130,14 +136,39 @@ h1 a:focus {
 
 .table {
   text-align: left;
+  width: 100%;
 }
 .table th,
 .table td {
-  padding: .5em 1em;
+  padding: .75em 1em;
   vertical-align: top;
 }
 
 .table tbody th,
 .table tbody td {
   border-top: 1px solid rgba(255, 255, 255, .1);
+}
+.table th:first-child {
+  padding-left: 0;
+}
+.table__assetname a {
+  color: #fff;
+  text-decoration: none;
+}
+.table__assetresources a {
+  text-decoration: none;
+  font-family: Monaco, monospace;
+  font-size: 14px;
+}
+
+.table__assetname a:hover,
+.table__assetname a:focus,
+.table__assetresources a:hover,
+.table__assetresources a:focus {
+  text-decoration: underline;
+}
+
+.code {
+  font-family: Monaco, monospace;
+  font-size: 16px;
 }
