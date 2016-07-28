@@ -4,13 +4,10 @@ import db from '../lib/db'
 import Record from '../lib/record'
 import nconf from 'nconf'
 import compression from 'compression'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
 import express from 'express'
 import babelify from 'express-babelify-middleware'
 import path from 'path'
 import lem from 'lem'
-import logger from 'morgan'
 import yaml from 'js-yaml'
 nconf.formats.yaml = require('nconf-yaml')
 
@@ -84,10 +81,6 @@ program
     app.set('views', path.join(__dirname, '../views'))
     app.set('view engine', 'pug')
 
-    app.use(logger('dev'))
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use(cookieParser())
     app.use(express.static(path.join(__dirname, '../public')))
     app.use('/docs', express.static(path.join(__dirname, '../docs')))
     app.use('/jquery', express.static(path.join(__dirname, '../node_modules/jquery')))
