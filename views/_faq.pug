@@ -1,0 +1,21 @@
+h1 How do I…
+h2#faq-scheduling Schedule daily data recordings?
+p Moniteur checks assets frequently and generates graphs for you.
+img(src='docs/welcome-process/welcome-process.001.png')
+img(src='docs/welcome-process/welcome-process.002.png')
+img(src='docs/welcome-process/welcome-process.003.png')
+img(src='docs/welcome-process/welcome-process.004.png')
+img(src='docs/welcome-process/welcome-process.005.png')
+
+h2#faq-assets See what assets are being monitored?
+p Here's a full list of the assets being monitored and the URLs that moniteur will check:
+p
+  strong
+    a(href='/settings') Current settings
+
+h2#faq-trigger Trigger a new recording?
+p Typically, moniteur records asset sizes on a daily basis, but you don't have to wait that long to see how big your CSS and JavaScript files got.
+p You can trigger a new recording at any time by executing:
+pre.code
+  code.user-select heroku run record -a moniteur
+p Note: you'll need the #[a(href="https://toolbelt.heroku.com/") Heroku toolbelt] to execute this command.

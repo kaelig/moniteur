@@ -3,15 +3,22 @@ html {
   background: #2a2a2b;
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
+
 body {
   margin: 0;
 }
 
 img {
+  border: 0;
   max-width: 100%;
+}
+
+a {
+  color: #ddd;
 }
 
 .l-container {
@@ -19,24 +26,6 @@ img {
   margin: 0 auto;
   padding: 0 1em;
   max-width: 1400px;
-}
-
-a {
-  color: #ddd;
-}
-
-.asset__linkto {
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity .5s 0;
-  padding: .3em;
-}
-.asset__linkto:hover,
-.asset__linkto:focus {
-  opacity: .6 !important;
-}
-.asset__name:hover .asset__linkto {
-  opacity: .3;
 }
 
 .l-header,
@@ -52,6 +41,10 @@ a {
 .l-footer {
   margin-top: 2em;
 }
+.l-footer a {
+  margin-right: 1.5em;
+}
+
 h1 {
   margin: 0;
 }
@@ -100,17 +93,26 @@ h1 a:focus {
 [data-asset-type=js] .asset__type::before {
   content: '❮❯';
 }
-
+.asset__linkto {
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity .5s 0;
+  padding: .3em;
+}
+.asset__linkto:hover,
+.asset__linkto:focus {
+  opacity: .6 !important;
+}
+.asset__name:hover .asset__linkto {
+  opacity: .3;
+}
 .asset__chart {
   min-height: 400px;
   width: 100%;
 }
-
-.l-footer a {
-  margin-right: 1.5em;
-}
-
 .trend {
+  position: relative;
+  top: 2px;
   float: right;
   margin-right: 1em;
   padding-right: 12px;
@@ -118,9 +120,8 @@ h1 a:focus {
   border-radius: 4px;
   background: rgba(255, 255, 255, .1);
   font-weight: normal;
-  font-size: 16px;
-  line-height: 1;
-  padding: 6px 12px;
+  font-size: 20px;
+  line-height: 32px;
   font-family: monospace;
 }
 .trend--down {
@@ -139,7 +140,6 @@ h1 a:focus {
   padding: .75em 1em;
   vertical-align: top;
 }
-
 .table tbody th,
 .table tbody td {
   border-top: 1px solid rgba(255, 255, 255, .1);
@@ -168,7 +168,20 @@ h1 a:focus {
   font-family: Monaco, monospace;
   font-size: 16px;
 }
+
 .user-select {
   -webkit-user-select: all;
   user-select: all;
+}
+
+.welcome-message {
+  margin-top: .5em;
+  font-size: 6em;
+  line-height: 1;
+  text-align: center;
+  font-weight: 100;
+}
+
+.align-center {
+  text-align: center;
 }

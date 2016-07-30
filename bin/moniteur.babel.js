@@ -105,7 +105,8 @@ program
 
 
     app.use('/', require('../routes/index').default)
-    app.use('/welcome', require('../routes/welcome').default)
+    app.use('/welcome', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
+    app.use('/support', (req, res) => res.render('welcome', { title: 'moniteur: support' }))
     app.use('/metrics', require('../routes/metrics').default)
     app.use('/settings', require('../routes/settings').default)
     app.use('/assets.json', (req, res, next) => {

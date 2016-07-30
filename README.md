@@ -1,20 +1,18 @@
 # moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur) [![NPM version](https://badge.fury.io/js/moniteur.svg)](http://badge.fury.io/js/moniteur)
 
-Monitor your asset size over time, in your browser, or using the provided HTTP API.
-
-**[Demo](https://moniteur.herokuapp.com/)**: collecting data hourly
-
-This is my first Node app, I know it is messy and it still lacks proper tests. Feedback is welcome!
-
-![ ](https://cdn.rawgit.com/kaelig/moniteur/8cc242f6fefa495a0b8746bca41f5980a76e80c7/docs/screenshot.png)
-
-## Installation
-
-On Heroku:
+For people who care about keeping an eye on their CSS and JavaScript file sizes.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-As a command line utility:
+**[Demo & Documentation](https://moniteur.herokuapp.com/)**
+
+![ ](https://cdn.rawgit.com/kaelig/moniteur/8cc242f6fefa495a0b8746bca41f5980a76e80c7/docs/screenshot.png)
+
+----
+
+## CLI
+
+Moniteur is also available as a command line interface:
 
 ```bash
 npm install -g moniteur
@@ -107,14 +105,13 @@ a great source of inspiration.
 - [x] Run as some sort of daemon that monitors asset metrics every X seconds
 - [x] Monitor JavaScript files
 - [ ] Unit / Integration tests
-- [ ] Option to filter graphs by time ranges
-  (last 7 days, last 30 days, last year)
-- [-] Providing a page's URL, scrape all assets out of it
-  and analyse them
-- [-] Parse all assets in a particular directory
+- [ ] Option to filter graphs by time range (last 7 days, last 30 days, last year)
+- [ ] Slack Bot
 
 ### Ideas
 
+- [ ] Providing a page's URL, scrape all assets out of it and analyse them
+- [ ] Parse all assets in a particular directory
 - [ ] Asset size budget limits
 - [ ] Email alert when budget is almost reached or exceeded
 - [ ] Weekly email recaps
