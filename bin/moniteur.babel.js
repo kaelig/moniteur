@@ -11,14 +11,7 @@ import express from 'express'
 import path from 'path'
 import lem from 'lem'
 import yaml from 'js-yaml'
-import browserSync from 'browser-sync'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackConfig from '../webpack.config'
 nconf.formats.yaml = require('nconf-yaml')
-const bundler = webpack(webpackConfig)
-
 const log = debug('moniteur:log')
 
 program
@@ -85,6 +78,12 @@ program
 
     // JS Setup
     if (app.get('env') === 'development') {
+      const webpack = require('webpack')
+      const webpackDevMiddleware = require('webpack-dev-middleware')
+      const webpackHotMiddleware = require('webpack-hot-middleware')
+      const webpackConfig = require('../webpack.config')
+      const bundler = webpack(webpackConfig)
+
       app.use(webpackDevMiddleware(bundler, {
         publicPath: '/js/',
         stats: { colors: true }
@@ -148,6 +147,8 @@ program
     app.set('port', process.env.PORT || 3000)
 
     if (app.get('env') === 'development') {
+      const browserSync = require('browser-sync')
+
       browserSync({
         server: {
           port: app.get('port'),
