@@ -35,7 +35,6 @@
     "jest-cli": "^13.2.3",
     "nodemon": "^1.9.2",
     "pug-loader": "^2.1.0",
-    "webpack": "^2.1.0-beta",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
   },
@@ -74,6 +73,7 @@
     "stylestats": "^6.3.0",
     "through": "^2.3.8",
     "valid-url": "^1.0.9",
+    "webpack": "^2.1.0-beta",
     "yargs": "^4.8.1"
   }
 }
