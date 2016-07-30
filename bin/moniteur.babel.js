@@ -1,3 +1,6 @@
+require('babel-register')
+require('babel-polyfill')
+
 import debug from 'debug'
 import program from 'commander'
 import db from '../lib/db'
@@ -5,11 +8,16 @@ import Record from '../lib/record'
 import nconf from 'nconf'
 import compression from 'compression'
 import express from 'express'
-import babelify from 'express-babelify-middleware'
 import path from 'path'
 import lem from 'lem'
 import yaml from 'js-yaml'
+import browserSync from 'browser-sync'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.config'
 nconf.formats.yaml = require('nconf-yaml')
+const bundler = webpack(webpackConfig)
 
 const log = debug('moniteur:log')
 
@@ -69,23 +77,31 @@ program
     app.locals.db = db(nconf.get('db'))
     log(app.locals.db)
 
-    app.use(compression())
-
     app.use(function (req, res, next) {
       res.locals.config = app.locals.config
       res.locals.db = app.locals.db
       next()
     })
 
+    // JS Setup
+    if (app.get('env') === 'development') {
+      app.use(webpackDevMiddleware(bundler, {
+        publicPath: '/js/',
+        stats: { colors: true }
+      }))
+      app.use(webpackHotMiddleware(bundler, {
+        log: console.log
+      }))
+    }
+
     // view engine setup
     app.set('views', path.join(__dirname, '../views'))
     app.set('view engine', 'pug')
 
-    app.use(express.static(path.join(__dirname, '../public')))
+    app.use('/js', express.static(path.join(__dirname, '../_dist/js')))
+    app.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
     app.use('/docs', express.static(path.join(__dirname, '../docs')))
-    app.use('/jquery', express.static(path.join(__dirname, '../node_modules/jquery')))
 
-    app.use('/js', babelify(path.join(__dirname, '../public/javascripts')))
 
     app.use('/', require('../routes/index').default)
     app.use('/welcome', require('../routes/welcome').default)
@@ -107,9 +123,9 @@ program
 
     // error handlers
 
-    // development error handler
-    // will print stacktrace
     if (app.get('env') === 'development') {
+      // development error handler
+      // will print stacktrace
       app.use(function (err, req, res, next) {
         res.status(err.status || 500)
         res.render('error', {
@@ -117,26 +133,43 @@ program
           error: err
         })
       })
-    }
-
-    // production error handler
-    // no stacktraces leaked to user
-    app.use(function (err, req, res, next) {
-      res.status(err.status || 500)
-      res.render('error', {
-        message: err.message,
-        error: {}
+    } else {
+      // production error handler
+      // no stacktraces leaked to user
+      app.use(function (err, req, res, next) {
+        res.status(err.status || 500)
+        res.render('error', {
+          message: err.message,
+          error: {}
+        })
       })
-    })
+    }
 
     app.set('port', process.env.PORT || 3000)
 
-    const server = app.listen(app.get('port'), () => {
-      console.log('Express server listening on port ' + server.address().port)
-      if (app.get('env') === 'development') {
+    if (app.get('env') === 'development') {
+      browserSync({
+        server: {
+          port: app.get('port'),
+          baseDir: './',
+          middleware: [app]
+        },
+        open: false,
+        logFileChanges: false,
+        notify: false,
+        files: [
+          'views/*.pug',
+          'client/stylesheets/*.css'
+        ]
+      })
+    } else {
+      app.use(compression())
+
+      const server = app.listen(app.get('port'), () => {
+        console.log('Express server listening on port ' + server.address().port)
         console.log('Open http://localhost:' + server.address().port)
-      }
-    })
+      })
+    }
   })
 
 program

@@ -5,3 +5,4 @@ bower_components
 .moniteurdb # local database
 .vscode
 .moniteurdb
+_dist

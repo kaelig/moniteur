@@ -1,11 +1,11 @@
+/* global Highcharts */
+
 /**
  * Assets graph Theme for Highcharts JS
  * @author Kaelig Deloumeau-Prigent
  * Based on Dark theme for Highcharts JS
  * @author Torstein Honsi
  */
-
-import Highcharts from 'highcharts'
 
 Highcharts.theme = {
   colors: ['#2b908f', '#90ee7e', '#f45b5b', 'rgba(119, 152, 192, .33)', 'rgba(170, 238, 238, .33)', '#ff0066', '#eeaaee',

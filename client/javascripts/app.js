@@ -1,6 +1,4 @@
-import $ from 'jquery'
-import Highcharts from 'highcharts'
-require('highcharts/modules/exporting')(Highcharts)
+/* global $, Highcharts */
 require('./assets-graph-theme')
 import prettyBytes from 'pretty-bytes'
 
@@ -12,8 +10,8 @@ function setTrend (assetHash, firstMetric, secondMetric) {
   const $trendElement = $('.js-trend-' + assetHash)
 
   if (difference !== 0) {
-    $trendElement.addClass('trend--' + trend)
     $trendElement.find('.js-trend-sign').text(trendSign)
+    $trendElement.addClass('trend--' + trend)
     $trendElement.find('.js-trend-value').text(prettyBytes(difference))
   }
 }
