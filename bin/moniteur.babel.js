@@ -76,6 +76,8 @@ program
       next()
     })
 
+    app.use(compression())
+
     // JS Setup
     if (app.get('env') === 'development') {
       const webpack = require('webpack')
@@ -164,8 +166,6 @@ program
         ]
       })
     } else {
-      app.use(compression())
-
       const server = app.listen(app.get('port'), () => {
         console.log('Express server listening on port ' + server.address().port)
         console.log('Open http://localhost:' + server.address().port)
