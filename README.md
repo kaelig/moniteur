@@ -1,4 +1,4 @@
-# moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur) [![NPM version](https://badge.fury.io/js/moniteur.svg)](http://badge.fury.io/js/moniteur)
+# moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur) [![npm version](https://badge.fury.io/js/moniteur.svg)](http://badge.fury.io/js/moniteur)
 
 For people who care about keeping an eye on their CSS and JavaScript file sizes.
 

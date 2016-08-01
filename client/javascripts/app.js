@@ -1,62 +1,93 @@
-/* global $, Highcharts */
+/* global Highcharts */
+/* eslint-env browser */
 require('./assets-graph-theme')
 const prettyBytes = require('pretty-bytes')
 
-$(function () {
-  $('.js-asset').each(function (assetContainer) {
-    const assetHash = $(this).data('asset-hash')
-    const assetType = $(this).data('asset-type')
+// Promisified XMLHttpRequest from:
+// http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promisifying-xmlhttprequest
+const get = (url) =>
+  new Promise((resolve, reject) => {
+    var req = new XMLHttpRequest()
+    req.open('GET', url)
 
-    $.getJSON('/metrics/' + assetType + '/' + assetHash, function (series) {
-      const sizes = series[0].data
-      const firstSize = sizes[0][1]
-      const lastSize = sizes[sizes.length - 1][1]
+    req.onload = () =>
+      req.status === 200 ? resolve(req.response) : reject(Error(req.statusText))
 
-      const difference = lastSize - firstSize
-      const trend = (difference < 0) ? 'down' : 'up'
-      const trendSign = (difference > 0) ? '+' : ''
-      const $trendElement = $('.js-trend-' + assetHash)
+    req.onerror = () =>
+      reject(Error('Network Error'))
 
-      if (difference !== 0) {
-        $trendElement.find('.js-trend-sign').text(trendSign)
-        $trendElement.addClass('trend--' + trend)
-        $trendElement.find('.js-trend-value').text(prettyBytes(difference))
-      }
+    // Make the request
+    req.send()
+  })
 
-      const chart = Highcharts.chart(
-        'asset-' + assetHash,
-        {
-          chart: {
-            type: 'spline'
-          },
-          yAxis: [
-            {
-              title: {
-                text: 'Size'
-              },
-              labels: {
-                formatter: function () {
-                  return prettyBytes(this.value)
-                }
-              }
+const getJSON = (url) =>
+  get(url).then(JSON.parse)
+
+document.querySelectorAll('.js-asset').forEach((assetContainer) => {
+  const assetHash = assetContainer.dataset.assetHash
+  const assetType = assetContainer.dataset.assetType
+
+  return getJSON('/metrics/' + assetType + '/' + assetHash).then((series) => {
+    const sizes = series[0].data
+    if (!sizes.length) {
+      assetContainer.querySelector('#js-asset-chart-' + assetHash).innerHTML =
+        `
+          <div class="align-center">
+            <h3>Could not find any data for this asset.</h3>
+            <p>
+              You may need to <a href="/support#faq-trigger">trigger a recording</a>
+              so that moniteur has some data to show.
+            </p>
+          </div>
+        `
+      return
+    }
+    const firstSize = sizes[0][1]
+    const lastSize = sizes[sizes.length - 1][1]
+
+    const difference = lastSize - firstSize
+    const trend = (difference < 0) ? 'down' : 'up'
+    const trendSign = (difference > 0) ? '+' : ''
+    const $trendElement = document.querySelector('.js-trend-' + assetHash)
+
+    if (difference !== 0) {
+      $trendElement.querySelector('.js-trend-sign').textContent = trendSign
+      $trendElement.classList.add('trend--' + trend)
+      $trendElement.querySelector('.js-trend-value').textContent = prettyBytes(difference)
+    }
+
+    Highcharts.chart(
+      'js-asset-chart-' + assetHash,
+      {
+        chart: {
+          type: 'spline'
+        },
+        yAxis: [
+          {
+            title: {
+              text: 'Size'
             },
-            {
-              title: {
-                text: 'Count'
-              },
-              opposite: true
-            }
-          ],
-          tooltip: {
-            crosshairs: [false, true],
-            formatter: function () {
-              console.log(this.series)
-              return '<b>' + this.series.name + '</b><br />' + Highcharts.dateFormat('%b %e, %H:%M', this.x) + ': <b>' + (this.series.area ? prettyBytes(this.y) : this.y) + '</b>'
+            labels: {
+              formatter: function () {
+                return prettyBytes(this.value)
+              }
             }
           },
-          series: series
-        }
-      )
-    })
+          {
+            title: {
+              text: 'Count'
+            },
+            opposite: true
+          }
+        ],
+        tooltip: {
+          crosshairs: [false, true],
+          formatter: function () {
+            return '<b>' + this.series.name + '</b><br />' + Highcharts.dateFormat('%b %e, %H:%M', this.x) + ': <b>' + (this.series.area ? prettyBytes(this.y) : this.y) + '</b>'
+          }
+        },
+        series: series
+      }
+    )
   })
 })

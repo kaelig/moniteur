@@ -6,8 +6,9 @@ import program from 'commander'
 import db from '../lib/db'
 import Record from '../lib/record'
 import nconf from 'nconf'
-import compression from 'compression'
 import express from 'express'
+import compression from 'compression'
+import slash from 'express-slash'
 import path from 'path'
 import lem from 'lem'
 import yaml from 'js-yaml'
@@ -64,15 +65,19 @@ program
   .description('start the server to show metrics in the browser')
   .action(() => {
     const app = express()
+    app.set('strict routing', true)
+    const router = express.Router({
+      caseSensitive: app.get('case sensitive routing'),
+      strict: app.get('strict routing')
+    })
+    app.use(router)
+    app.use(slash())
 
-    app.locals.config = {}
-    app.locals.config.assets = nconf.get('assets')
-    app.locals.db = db(nconf.get('db'))
-    log(app.locals.db)
+    const dbinstance = db(nconf.get('db'))
 
-    app.use(function (req, res, next) {
-      res.locals.config = app.locals.config
-      res.locals.db = app.locals.db
+    router.use((req, res, next) => {
+      res.locals.assets = nconf.get('assets')
+      res.locals.db = dbinstance
       next()
     })
 
@@ -99,25 +104,25 @@ program
     app.set('views', path.join(__dirname, '../views'))
     app.set('view engine', 'pug')
 
-    app.use('/js', express.static(path.join(__dirname, '../_dist/js')))
-    app.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
-    app.use('/docs', express.static(path.join(__dirname, '../docs')))
+    router.use('/js', express.static(path.join(__dirname, '../_dist/js')))
+    router.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
+    router.use('/docs', express.static(path.join(__dirname, '../docs')))
 
-
-    app.use('/', require('../routes/index').default)
-    app.use('/welcome', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
-    app.use('/support', (req, res) => res.render('welcome', { title: 'moniteur: support' }))
-    app.use('/metrics', require('../routes/metrics').default)
-    app.use('/settings', require('../routes/settings').default)
-    app.use('/assets.json', (req, res, next) => {
+    router.use('/', require('../routes/index').default)
+    router.get('/welcome/', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
+    router.get('/support/', (req, res) => res.render('support', { title: 'moniteur: support' }))
+    router.use('/metrics', require('../routes/metrics').default)
+    app.use('/settings/', require('../routes/settings').default)
+    router.get('/assets.json', (req, res, next) => {
       res.type('application/json')
 
       // Conceal database configuration settings from the public
-      res.send(JSON.stringify(nconf.get('assets'), null, 2))
+      res.send(JSON.stringify(res.locals.assets, null, 2))
+      next()
     })
 
     // catch 404 and forward to error handler
-    app.use(function (req, res, next) {
+    app.use((req, res, next) => {
       let err = new Error('Not Found')
       err.status = 404
       next(err)
@@ -128,7 +133,7 @@ program
     if (app.get('env') === 'development') {
       // development error handler
       // will print stacktrace
-      app.use(function (err, req, res, next) {
+      app.use((err, req, res, next) => {
         res.status(err.status || 500)
         res.render('error', {
           message: err.message,
@@ -138,7 +143,7 @@ program
     } else {
       // production error handler
       // no stacktraces leaked to user
-      app.use(function (err, req, res, next) {
+      app.use((err, req, res, next) => {
         res.status(err.status || 500)
         res.render('error', {
           message: err.message,

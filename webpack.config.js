@@ -27,8 +27,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       output: { comments: false },
-      sourcemap: true
-    }),
-    new webpack.HotModuleReplacementPlugin()
+      sourceMap: true
+    })
   ]
 }
