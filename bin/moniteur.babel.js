@@ -70,9 +70,9 @@ program
       caseSensitive: app.get('case sensitive routing'),
       strict: app.get('strict routing')
     })
+    app.use(compression())
     app.use(router)
     app.use(slash())
-    app.use(compression())
 
     const dbinstance = db(nconf.get('db'))
 
@@ -172,10 +172,7 @@ program
         ]
       })
     } else {
-      const server = app.listen(app.get('port'), () => {
-        console.log('Express server listening on port ' + server.address().port)
-        console.log('Open http://localhost:' + server.address().port)
-      })
+      app.listen(app.get('port'))
     }
   })
 
