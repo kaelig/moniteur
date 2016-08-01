@@ -82,7 +82,6 @@ program
       next()
     })
 
-
     // JS Setup
     if (app.get('env') === 'development') {
       const webpack = require('webpack')
@@ -115,21 +114,24 @@ program
     app.use('/settings/', require('../routes/settings').default)
     router.get('/assets.json', (req, res, next) => {
       res.type('application/json')
-
-      // Conceal database configuration settings from the public
       res.send(JSON.stringify(res.locals.assets, null, 2))
       next()
     })
 
-    // catch 404 and forward to error handler
+    // Hide from crawlers
+    router.get('/robots.txt', (req, res) => {
+      res.type('text/plain')
+      res.send('User-agent: *\nDisallow: /')
+    })
+
+    // Catch 404 and forward to error handler
     app.use((req, res, next) => {
       let err = new Error('Not Found')
       err.status = 404
       next(err)
     })
 
-    // error handlers
-
+    // Error handlers
     if (app.get('env') === 'development') {
       // development error handler
       // will print stacktrace
