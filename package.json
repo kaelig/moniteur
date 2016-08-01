@@ -6,7 +6,7 @@
     "moniteur": "./bin/moniteur"
   },
   "engines": {
-    "node": "6.3",
+    "node": ">= 6.3.1",
     "npm": "latest"
   },
   "repository": {
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.11.6",
     "commander": "^2.9.0",
