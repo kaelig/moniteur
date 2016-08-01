@@ -6,8 +6,8 @@ import program from 'commander'
 import db from '../lib/db'
 import Record from '../lib/record'
 import nconf from 'nconf'
-import express from 'express'
 import compression from 'compression'
+import express from 'express'
 import slash from 'express-slash'
 import path from 'path'
 import lem from 'lem'
@@ -72,6 +72,7 @@ program
     })
     app.use(router)
     app.use(slash())
+    app.use(compression())
 
     const dbinstance = db(nconf.get('db'))
 
@@ -81,7 +82,6 @@ program
       next()
     })
 
-    app.use(compression())
 
     // JS Setup
     if (app.get('env') === 'development') {
