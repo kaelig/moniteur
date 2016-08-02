@@ -15,6 +15,6 @@ assets:
     - "fixtures/abc.js"
     - "fixtures/xyz.js"
   A remote Script: "http://assets.guim.co.uk/javascripts/bootstraps/app.js"
-db:
-  # Uncomment to use Redis instead of the filesystem
-  # redis_url: redis://localhost:6379
+# Uncomment to use Redis instead of the filesystem
+# db:
+#   redis_url: redis://localhost:6379
