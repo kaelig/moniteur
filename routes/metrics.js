@@ -16,9 +16,10 @@ export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
   const end = req.params[4] || false
 
   res.type('application/json')
+
   const read = new Read(assetType, assetHash, start, end, res.locals.assets, lem(res.locals.db))
 
   Promise.all(read.getMetrics()).then((data) => {
-    res.send(JSON.stringify(data, null, 4))
+    res.json(data, null, 4)
   }, (reason) => log(reason))
 })
