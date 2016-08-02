@@ -27,9 +27,9 @@ nconf
   .argv()
 
 nconf
-  .file('development', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
-  .file('user', { file: path.join(__dirname, '/../.moniteurrc.yml'), format: nconf.formats.yaml })
-  .file('default', { file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
+  .file({ file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
+  .file('settings', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
+  .file('settings', { file: '.moniteurrc.yml', dir: process.cwd(), search: true, format: nconf.formats.yaml })
 
 nconf
   .set('assets', process.env.ASSETS ? yaml.safeLoad(process.env.ASSETS) : nconf.get('assets'))
@@ -74,6 +74,7 @@ program
     app.use(router)
     app.use(slash())
 
+    log(nconf.get('db'))
     const dbinstance = db(nconf.get('db'))
 
     router.use((req, res, next) => {
