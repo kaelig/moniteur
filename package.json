@@ -44,6 +44,7 @@
     "start": "./bin/moniteur serve",
     "record": "./bin/moniteur record",
     "dev": "DEBUG=moniteur:* nodemon --watch .moniteurrc.development.yml --watch webpack.config.js --watch bin/moniteur.babel.js ./bin/moniteur serve",
+    "prod": "NODE_ENV=production ./bin/moniteur serve",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' . --ext .js,.jsx"
   },
   "dependencies": {
