@@ -9,7 +9,7 @@ const log = debug('moniteur:log')
 // Example:
 // Series (since forever): /metrics/css/adf6e9c154cb57a818f7fb407085bff6
 // Series between two dates: /metrics/css/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475
-export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
+export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res, next) => {
   const assetType = req.params[0]
   const assetHash = req.params[1]
   const start = req.params[3] || false
@@ -21,5 +21,5 @@ export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
 
   Promise.all(read.getMetrics()).then((data) => {
     res.json(data, null, 4)
-  }, (reason) => log(reason))
+  }).catch(next)
 })

@@ -12,6 +12,7 @@ import slash from 'express-slash'
 import path from 'path'
 import lem from 'lem'
 import yaml from 'js-yaml'
+import fs from 'fs'
 nconf.formats.yaml = require('nconf-yaml')
 const log = debug('moniteur:log')
 
@@ -22,14 +23,17 @@ nconf
   .env({
     separator: '__',
     lowerCase: true,
-    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'NODE_ENV', 'DB__REDIS_URL']
+    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'DB__REDIS_URL']
   })
   .argv()
 
-nconf
-  .file({ file: path.join(__dirname, '/../.moniteurrc.default.yml'), format: nconf.formats.yaml })
-  .file('settings', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
-  .file('settings', { file: '.moniteurrc.yml', dir: process.cwd(), search: true, format: nconf.formats.yaml })
+
+if (process.env.NODE_ENV !== 'production') {
+  nconf.file('environment', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
+}
+nconf.file('environment', { file: '.moniteurrc.yml', dir: process.cwd(), search: true, format: nconf.formats.yaml })
+
+nconf.defaults(yaml.safeLoad(fs.readFileSync(path.join(__dirname, '/../.moniteurrc.default.yml'), 'utf8')))
 
 nconf
   .set('assets', process.env.ASSETS ? yaml.safeLoad(process.env.ASSETS) : nconf.get('assets'))
@@ -115,7 +119,7 @@ program
     app.use('/settings/', require('../routes/settings').default)
     router.get('/assets.json', (req, res, next) => {
       res.type('application/json')
-      res.send(JSON.stringify(res.locals.assets, null, 2))
+      res.json(res.locals.assets, null, 2)
       next()
     })
 
