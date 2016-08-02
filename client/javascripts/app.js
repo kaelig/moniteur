@@ -23,11 +23,13 @@ const get = (url) =>
 const getJSON = (url) =>
   get(url).then(JSON.parse)
 
-document.querySelectorAll('.js-asset').forEach((assetContainer) => {
+// Using Array.from until the polyfill service supports NodeList iterators
+// see https://github.com/Financial-Times/polyfill-service/issues/718
+Array.from(document.querySelectorAll('.js-asset')).forEach((assetContainer) => {
   const assetHash = assetContainer.dataset.assetHash
   const assetType = assetContainer.dataset.assetType
 
-  return getJSON('/metrics/' + assetType + '/' + assetHash).then((series) => {
+  return getJSON(`/metrics/${assetType}/${assetHash}`).then((series) => {
     const sizes = series[0].data
     if (!sizes.length) {
       assetContainer.querySelector('#js-asset-chart-' + assetHash).innerHTML =
