@@ -107,6 +107,7 @@ program
     // view engine setup
     app.set('views', path.join(__dirname, '../views'))
     app.set('view engine', 'pug')
+    app.set('view cache', true)
 
     router.use('/js', express.static(path.join(__dirname, '../_dist/js')))
     router.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
