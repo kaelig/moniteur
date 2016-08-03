@@ -119,7 +119,6 @@ program
     router.use('/metrics', require('../routes/metrics').default)
     app.use('/settings/', require('../routes/settings').default)
     router.get('/assets.json', (req, res, next) => {
-      res.type('application/json')
       res.json(res.locals.assets, null, 2)
       next()
     })
