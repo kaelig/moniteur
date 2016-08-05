@@ -27,7 +27,6 @@ nconf
   })
   .argv()
 
-
 if (process.env.NODE_ENV !== 'production') {
   nconf.file('environment', { file: path.join(__dirname, '/../.moniteurrc.development.yml'), format: nconf.formats.yaml })
 }
