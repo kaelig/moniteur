@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+  $(function() {
+    [
+      'http://localhost:3000/metrics/css/55f388f6dc2273862e3def6af444b1ac',
+      'http://localhost:3000/metrics/js/c2d8c58209ad9de336234ddbb0663dc6',
+      // 'http://localhost:3000/metrics/css/fa307962c14471cbd50debae2ade4408',
+      // 'http://localhost:3000/metrics/css/36a04afbd00213aab44f465b16b0346b',
+      // 'http://localhost:3000/metrics/css/bda96a663a5feb0ac96eca7770a89181',
+      // 'http://localhost:3000/metrics/js/e6ca022c97ee4c618b441be8a8c5bfe4',
+      // 'http://localhost:3000/metrics/css/8f85240de1e37aac8f53d5d365ebc875'
+    ].forEach((url) => {
+      $.getJSON(url, (data) => console.table(data[0].data))
+    })
+  })
+</script>

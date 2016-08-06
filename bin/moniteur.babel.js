@@ -23,7 +23,7 @@ nconf
   .env({
     separator: '__',
     lowerCase: true,
-    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'DB__REDIS_URL']
+    whitelist: ['REDISCLOUD_URL', 'REDIS_URL', 'DB__REDIS_URL', 'DB__POSTGRES_URL', 'POSTGRES_URL']
   })
   .argv()
 
@@ -45,6 +45,12 @@ nconf
     : (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.replace(/redis\/\//, 'redis://')
       : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://')
         : null)))
+
+nconf
+  .set('db:postgres_url',
+    process.env.POSTGRES_URL ? process.env.POSTGRES_URL.replace(/postgres\/\//, 'postgres://')
+      : (nconf.get('db:postgres_url') ? nconf.get('db:postgres_url').replace(/postgres\/\//, 'postgres://')
+        : null))
 
 program
   .command('record')
@@ -85,6 +91,7 @@ program
       res.locals.db = dbinstance
       next()
     })
+
 
     // JS Setup
     if (app.get('env') === 'development') {
