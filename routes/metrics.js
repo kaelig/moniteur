@@ -1,7 +1,7 @@
 const express = require('express')
 const debug = require('debug')
 const lem = require('lem')
-const sensors = Object.freeze(require('../lib/sensors'))
+const sensors = require('../lib/sensors')
 const highland = require('highland')
 
 const _ = highland
@@ -14,8 +14,8 @@ const log = debug('moniteur:log')
 module.exports = router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
   const assetType = req.params[0]
   const assetHash = req.params[1]
-  const start = req.params[3] || (Date.now() - 3600 * 24 * 30 * 1000)
-  const end = req.params[4] || Date.now()
+  const start = req.params[3] || (Date.now() - 3600 * 24 * 30 * 1000).toString()
+  const end = req.params[4] || Date.now().toString()
   const db = lem(res.locals.db)
 
   // Get Array of values for metric
@@ -39,6 +39,7 @@ module.exports = router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) =>
       .collect()
       .map((data) =>
         Object.assign(
+          {},
           sensors[assetType][metric],
           { data: data }))
   }).toArray((data) =>
