@@ -1,18 +1,18 @@
 require('babel-register')
 require('babel-polyfill')
 
-import debug from 'debug'
-import program from 'commander'
-import db from '../lib/db'
-import Record from '../lib/record'
-import nconf from 'nconf'
-import compression from 'compression'
-import express from 'express'
-import slash from 'express-slash'
-import path from 'path'
-import lem from 'lem'
-import yaml from 'js-yaml'
-import fs from 'fs'
+const debug = require('debug')
+const program = require('commander')
+const db = require('../lib/db')
+const Record = require('../lib/record')
+const nconf = require('nconf')
+const compression = require('compression')
+const express = require('express')
+const slash = require('express-slash')
+const path = require('path')
+const lem = require('lem')
+const yaml = require('js-yaml')
+const fs = require('fs')
 nconf.formats.yaml = require('nconf-yaml')
 const log = debug('moniteur:log')
 
@@ -112,11 +112,11 @@ program
     router.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
     router.use('/docs', express.static(path.join(__dirname, '../docs')))
 
-    router.use('/', require('../routes/index').default)
+    router.use('/', require('../routes/index'))
     router.get('/welcome/', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
     router.get('/support/', (req, res) => res.render('support', { title: 'moniteur: support' }))
-    router.use('/metrics', require('../routes/metrics').default)
-    app.use('/settings/', require('../routes/settings').default)
+    router.use('/metrics', require('../routes/metrics'))
+    app.use('/settings/', require('../routes/settings'))
     router.get('/assets.json', (req, res, next) => {
       res.json(res.locals.assets, null, 2)
       next()

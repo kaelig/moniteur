@@ -1,7 +1,7 @@
 /* global describe, it, expect, jest, jasmine */
 jest.disableAutomock()
-import utils from '../lib/utils'
-import md5 from 'md5'
+const utils = require('../lib/utils')
+const md5 = require('md5')
 
 const assets = {
   SingleResource: 'http://foo.com/something.css',

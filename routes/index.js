@@ -1,9 +1,9 @@
-import express from 'express'
-import utils from '../lib/utils'
+const express = require('express')
+const utils = require('../lib/utils')
 
 const router = express.Router()
 
-export default router.get('/', (req, res) => {
+module.exports = router.get('/', (req, res) => {
   const assets = Object.keys(res.locals.assets).map((asset) =>
     ({
       name: asset,

@@ -1,8 +1,8 @@
-import express from 'express'
-import debug from 'debug'
-import lem from 'lem'
-import sensors from '../lib/sensors'
-import highland from 'highland'
+const express = require('express')
+const debug = require('debug')
+const lem = require('lem')
+const sensors = Object.freeze(require('../lib/sensors'))
+const highland = require('highland')
 
 const _ = highland
 const router = express.Router()
@@ -11,7 +11,7 @@ const log = debug('moniteur:log')
 // Example:
 // Series (since forever): /metrics/css/adf6e9c154cb57a818f7fb407085bff6
 // Series between two dates: /metrics/css/adf6e9c154cb57a818f7fb407085bff6/1015711104475..1415711104475
-export default router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
+module.exports = router.get(/^\/(\w+)\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
   const assetType = req.params[0]
   const assetHash = req.params[1]
   const start = req.params[3] || (Date.now() - 3600 * 24 * 30 * 1000)
