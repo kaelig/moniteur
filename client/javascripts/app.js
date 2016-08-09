@@ -7,9 +7,8 @@ const prettyBytes = require('pretty-bytes')
 // see https://github.com/Financial-Times/polyfill-service/issues/718
 Array.from(document.querySelectorAll('.js-asset')).forEach((assetContainer) => {
   const assetHash = assetContainer.dataset.assetHash
-  const assetType = assetContainer.dataset.assetType
 
-  return fetch(`/metrics/${assetType}/${assetHash}`)
+  return fetch(`/metrics/${assetHash}`)
     .then(res => res.json())
     .then((series) => {
       const sizes = series[0].data

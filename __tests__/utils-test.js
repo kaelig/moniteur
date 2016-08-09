@@ -10,8 +10,8 @@ const assets = {
   ]
 }
 
-describe('read', () => {
-  it('hashes assets', () => {
+describe('hashedAssets', () => {
+  it('should hash assets', () => {
     const hashedAssets = utils.hashAssets(assets)
     expect(hashedAssets[md5('SingleResource')]).toEqual(jasmine.any(String))
     expect(hashedAssets[md5('Bundle')]).toEqual(jasmine.any(Array))
@@ -24,5 +24,12 @@ describe('assetType', () => {
     expect(utils.getAssetType('/path/to.html')).toEqual('html')
     expect(utils.getAssetType('http://css.com/something.css')).toEqual('css')
     expect(utils.getAssetType(['http://bar.com/something.css'])).toEqual('css')
+  })
+})
+
+describe('getAssetTypeFromHash', () => {
+  it('returns the correct asset type', () => {
+    const hash = md5(Object.keys(assets)[0])
+    expect(utils.getAssetTypeFromHash(hash, assets)).toEqual('css')
   })
 })
