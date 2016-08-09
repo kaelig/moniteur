@@ -29,6 +29,7 @@ Array.from(document.querySelectorAll('.js-asset')).forEach((assetContainer) => {
       const lastSize = sizes[sizes.length - 1][1]
 
       const difference = lastSize - firstSize
+      const prettyDifference = prettyBytes(difference)
       const trend = (difference < 0) ? 'down' : 'up'
       const trendSign = (difference > 0) ? '+' : ''
       const $trendElement = document.querySelector('.js-trend-' + assetHash)
@@ -36,7 +37,8 @@ Array.from(document.querySelectorAll('.js-asset')).forEach((assetContainer) => {
       if (difference !== 0) {
         $trendElement.querySelector('.js-trend-sign').textContent = trendSign
         $trendElement.classList.add('trend--' + trend)
-        $trendElement.querySelector('.js-trend-value').textContent = prettyBytes(difference)
+        $trendElement.querySelector('.js-trend-value').textContent = prettyDifference
+        $trendElement.setAttribute('title', `${trendSign}${prettyDifference} (uncompressed) compared to the beginning of the period`)
       }
 
       Highcharts.chart(
