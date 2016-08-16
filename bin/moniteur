@@ -1,4 +1,3 @@
 #!/usr/bin/env node
-require('babel-register')
-require('babel-polyfill')
-require('./moniteur.babel')
+
+require('./moniteur.js')

@@ -7,8 +7,8 @@ module.exports = {
     filename: './client/javascripts/app.js'
   },
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, '_dist/js/'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist/js/'),
     publicPath: '/js/'
   },
   module: {
@@ -22,6 +22,10 @@ module.exports = {
         }
       }
     ]
+  },
+  stats: {
+    // Nice colored output
+    colors: true
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({

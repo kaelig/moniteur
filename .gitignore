@@ -5,7 +5,7 @@ bower_components
 .moniteurdb # local database
 .vscode
 .moniteurdb
-_dist
+dist
 
 # Comment this line if you'd like to version your custom configuration
 /.moniteurrc.yml

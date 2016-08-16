@@ -1,6 +1,3 @@
-require('babel-register')
-require('babel-polyfill')
-
 const debug = require('debug')
 const program = require('commander')
 const db = require('../lib/db')
@@ -108,7 +105,7 @@ program
     app.set('view engine', 'pug')
     app.set('view cache', true)
 
-    router.use('/js', express.static(path.join(__dirname, '../_dist/js')))
+    router.use('/js', express.static(path.join(__dirname, '../dist/js')))
     router.use('/stylesheets', express.static(path.join(__dirname, '../client/stylesheets')))
     router.use('/docs', express.static(path.join(__dirname, '../docs')))
 
