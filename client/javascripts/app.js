@@ -3,9 +3,7 @@
 require('./assets-graph-theme')
 const prettyBytes = require('pretty-bytes')
 
-// Using Array.from until the polyfill service supports NodeList iterators
-// see https://github.com/Financial-Times/polyfill-service/issues/718
-Array.from(document.querySelectorAll('.js-asset')).forEach((assetContainer) => {
+document.querySelectorAll('.js-asset').forEach((assetContainer) => {
   const assetHash = assetContainer.dataset.assetHash
 
   return fetch(`/metrics/${assetHash}`)
