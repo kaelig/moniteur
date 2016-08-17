@@ -69,7 +69,6 @@
     "redisdown": "^0.1.12",
     "request": "^2.74.0",
     "stylestats": "^6.3.0",
-    "through": "^2.3.8",
     "valid-url": "^1.0.9",
     "webpack": "^2.1.0-beta",
     "yargs": "^4.8.1"
