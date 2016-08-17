@@ -57,7 +57,6 @@
     "gzip-size": "^3.0.0",
     "highcharts": "^4.2.5",
     "highland": "^3.0.0-beta.2",
-    "jquery": "^3.1.0",
     "js-yaml": "^3.6.1",
     "lem": "1.0.0",
     "level": "^1.4.0",
