@@ -1,5 +1,4 @@
-/* global describe, it, expect, jest, jasmine */
-jest.disableAutomock()
+/* global describe, it, expect, jasmine */
 const utils = require('../lib/utils')
 const md5 = require('md5')
 
