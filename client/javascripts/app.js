@@ -3,7 +3,7 @@
 require('./assets-graph-theme')
 const prettyBytes = require('pretty-bytes')
 
-document.querySelectorAll('.js-asset').forEach((assetContainer) => {
+Array.from(document.querySelectorAll('.js-asset')).map((assetContainer) => {
   const assetHash = assetContainer.dataset.assetHash
 
   return fetch(`/metrics/${assetHash}`)
