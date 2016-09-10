@@ -20,7 +20,7 @@ module.exports = router.get(/^\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
   const db = lem(res.locals.db)
 
   // Get Array of values for metric
-  _(Object.keys(sensors[assetType])).flatMap((metric) => {
+  _(Object.keys(sensors[assetType])).flatMap(metric => {
     const key = `assets.${assetHash}.${metric}`
     log('Opening ValueStream for:', key)
     return _(db.valuestream(
@@ -30,19 +30,18 @@ module.exports = router.get(/^\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
         end: end
       }
     ))
-      .filter((data) => data.value !== 0)
-      .map((data) =>
+      .filter(data => data.value !== 0)
+      .map(data =>
         [
           data.key,
           data.value
         ]
       )
       .collect()
-      .map((data) =>
+      .map(data =>
         Object.assign(
           {},
           sensors[assetType][metric],
           { data: data }))
-  }).toArray((data) =>
-    res.json(data))
+  }).toArray(data => res.json(data))
 })

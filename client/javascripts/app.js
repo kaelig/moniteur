@@ -3,12 +3,12 @@
 require('./assets-graph-theme')
 const prettyBytes = require('pretty-bytes')
 
-Array.from(document.querySelectorAll('.js-asset')).map((assetContainer) => {
+Array.from(document.querySelectorAll('.js-asset')).map(assetContainer => {
   const assetHash = assetContainer.dataset.assetHash
 
   return fetch(`/metrics/${assetHash}`)
     .then(res => res.json())
-    .then((series) => {
+    .then(series => {
       const sizes = series[0].data
       if (!sizes.length) {
         assetContainer.querySelector('#js-asset-chart-' + assetHash).innerHTML =

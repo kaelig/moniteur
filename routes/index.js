@@ -4,7 +4,7 @@ const utils = require('../lib/utils')
 const router = express.Router()
 
 module.exports = router.get('/', (req, res) => {
-  const assets = Object.keys(res.locals.assets).map((asset) =>
+  const assets = Object.keys(res.locals.assets).map(asset =>
     ({
       name: asset,
       hash: utils.getAssetHash(asset),
