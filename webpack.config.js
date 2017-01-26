@@ -12,26 +12,16 @@ module.exports = {
     publicPath: '/js/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        }
+        use: ['babel-loader']
       }
     ]
   },
   stats: {
     // Nice colored output
     colors: true
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      output: { comments: false },
-      sourceMap: true
-    })
-  ]
+  }
 }
