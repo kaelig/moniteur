@@ -1,5 +1,7 @@
 # moniteur [![Build Status](https://travis-ci.org/kaelig/moniteur.svg)](https://travis-ci.org/kaelig/moniteur) [![npm version](https://badge.fury.io/js/moniteur.svg)](http://badge.fury.io/js/moniteur)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/moniteur.svg)](https://greenkeeper.io/)
+
 For people who care about keeping an eye on their CSS and JavaScript file sizes.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
