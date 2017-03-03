@@ -70,6 +70,6 @@
     "stylestats": "^7.0.0",
     "valid-url": "^1.0.9",
     "webpack": "^2.1.0-beta",
-    "yargs": "^6.6.0"
+    "yargs": "^7.0.1"
   }
 }
