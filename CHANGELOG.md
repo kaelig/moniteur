@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.11"></a>
+## [0.7.11](https://github.com/kaelig/moniteur/compare/v0.7.10...v0.7.11) (2017-03-05)
+
+
+### Bug Fixes
+
+* **route:** Fix routes for static pages ([c2a293b](https://github.com/kaelig/moniteur/commit/c2a293b))
+
+
+
 <a name="0.7.10"></a>
 ## [0.7.10](https://github.com/kaelig/moniteur/compare/v0.7.9...v0.7.10) (2017-03-05)
 
