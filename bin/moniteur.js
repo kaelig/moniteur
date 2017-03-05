@@ -5,7 +5,7 @@ const Record = require('../lib/record')
 const nconf = require('nconf')
 const compression = require('compression')
 const express = require('express')
-const slash = require('express-slash')
+const slashes = require('express-slashes')
 const path = require('path')
 const lem = require('lem')
 const yaml = require('js-yaml')
@@ -72,7 +72,7 @@ program
     })
     app.use(compression())
     app.use(router)
-    app.use(slash())
+    app.use(slashes())
 
     log(nconf.get('db'))
     const dbinstance = db(nconf.get('db'))
@@ -113,7 +113,7 @@ program
     router.get('/welcome/', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
     router.get('/support/', (req, res) => res.render('support', { title: 'moniteur: support' }))
     router.use('/metrics', require('../routes/metrics'))
-    app.use('/settings/', require('../routes/settings'))
+    app.use('/settings', require('../routes/settings'))
     router.get('/assets.json', (req, res, next) => {
       res.json(res.locals.assets, null, 2)
       next()
@@ -182,15 +182,11 @@ program
 program
   .command('assets')
   .description('display the list of assets loaded by moniteur')
-  .action(() => {
-    return console.log(nconf.get('assets'))
-  })
+  .action(() => console.log(nconf.get('assets')))
 
 program.command('help', null, {isDefault: true})
   .description('display this helpful message')
-  .action(() => {
-    program.outputHelp()
-  })
+  .action(() => program.outputHelp())
 
 program.command('*', null, {noHelp: true})
   .action(function (cmd) {
