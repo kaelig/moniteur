@@ -114,9 +114,8 @@ program
     router.get('/support', (req, res) => res.render('support', { title: 'moniteur: support' }))
     router.use('/metrics', require('../routes/metrics'))
     app.use('/settings', require('../routes/settings'))
-    router.get('/assets.json', (req, res, next) => {
-      res.json(res.locals.assets, null, 2)
-      next()
+    router.get('/assets.json', (req, res) => {
+      res.json(res.locals.assets)
     })
 
     // Hide from crawlers
