@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.12"></a>
+## [0.7.12](https://github.com/kaelig/moniteur/compare/v0.7.11...v0.7.12) (2017-03-05)
+
+
+### Bug Fixes
+
+* **assets.json:** Fix an issue where /assets.json wouldn't work ([68413ba](https://github.com/kaelig/moniteur/commit/68413ba))
+
+
+
 <a name="0.7.11"></a>
 ## [0.7.11](https://github.com/kaelig/moniteur/compare/v0.7.10...v0.7.11) (2017-03-05)
 
