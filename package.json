@@ -25,6 +25,7 @@
   "homepage": "https://github.com/kaelig/moniteur",
   "devDependencies": {
     "browser-sync": "^2.18.8",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.17.0",
     "eslint-config-standard": "^7.0.0",
     "eslint-plugin-jasmine": "^2.2.0",
@@ -71,5 +72,10 @@
     "valid-url": "^1.0.9",
     "webpack": "^2.2.1",
     "yargs": "^7.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
