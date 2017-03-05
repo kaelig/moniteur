@@ -110,8 +110,8 @@ program
     router.use('/docs', express.static(path.join(__dirname, '../docs')))
 
     router.use('/', require('../routes/index'))
-    router.get('/welcome/', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
-    router.get('/support/', (req, res) => res.render('support', { title: 'moniteur: support' }))
+    router.get('/welcome', (req, res) => res.render('welcome', { title: 'moniteur: welcome' }))
+    router.get('/support', (req, res) => res.render('support', { title: 'moniteur: support' }))
     router.use('/metrics', require('../routes/metrics'))
     app.use('/settings', require('../routes/settings'))
     router.get('/assets.json', (req, res, next) => {
