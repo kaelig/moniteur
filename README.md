@@ -96,8 +96,12 @@ Between two dates:
 
 MIT
 
-Acknowledgments: "merci" to https://github.com/t32k/stylestats, which has been
+## Acknowledgments
+
+_Merci_ to https://github.com/t32k/stylestats, which has been
 a great source of inspiration.
+
+And thanks to @oncletom for helping building the early versions of moniteur.
 
 ## Roadmap
 
