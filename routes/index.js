@@ -11,5 +11,5 @@ module.exports = router.get('/', (req, res) => {
       type: utils.getAssetType(res.locals.assets[asset])
     })
   )
-  res.render('index', { title: 'moniteur', assets: assets })
+  res.render('index', { title: 'moniteur', assets })
 })

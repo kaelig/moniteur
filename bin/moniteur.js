@@ -182,15 +182,11 @@ program
 program
   .command('assets')
   .description('display the list of assets loaded by moniteur')
-  .action(() => {
-    return console.log(nconf.get('assets'))
-  })
+  .action(() => console.log(nconf.get('assets')))
 
 program.command('help', null, {isDefault: true})
   .description('display this helpful message')
-  .action(() => {
-    program.outputHelp()
-  })
+  .action(() => program.outputHelp())
 
 program.command('*', null, {noHelp: true})
   .action(function (cmd) {

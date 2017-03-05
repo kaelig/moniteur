@@ -15,5 +15,5 @@ module.exports = router.get('/', (req, res) => {
       resources: resources
     }
   })
-  res.render('settings', { title: 'moniteur: current settings', assets: assets })
+  res.render('settings', { title: 'moniteur: current settings', assets })
 })
