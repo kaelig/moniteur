@@ -1,7 +1,7 @@
 {
   "name": "moniteur",
   "description": "Monitor your asset size over time, in your browser, or using the provided HTTP API.",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "bin": {
     "moniteur": "./bin/moniteur"
   },
@@ -33,6 +33,7 @@
     "eslint-plugin-standard": "^2.1.1",
     "jest-cli": "^19.0.2",
     "nodemon": "^1.11.0",
+    "standard-version": "^4.0.0",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1"
   },
@@ -41,6 +42,7 @@
     "prestart": "webpack -p",
     "start": "NODE_ENV=production ./bin/moniteur serve",
     "record": "./bin/moniteur record",
+    "release": "standard-version",
     "dev": "DEBUG=moniteur:* nodemon -e js,pug --watch views --watch routes --watch lib --watch .moniteurrc.development.yml --watch .moniteurrc.default.yml --watch .moniteurrc.yml --watch webpack.config.js --watch bin/moniteur.js ./bin/moniteur serve",
     "lint": "eslint . --format codeframe --ext .js,.jsx"
   },
