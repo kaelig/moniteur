@@ -76,7 +76,14 @@ program
     })
 
     if (process.env.USERNAME && process.env.PASSWORD) {
-      app.use(auth.connect(basic))
+      app.use(function(req, res, next) {
+        // Exclude /metrics so we can fetch() them
+        if (req.path.startsWith('/metrics')) {
+          next()
+        } else {
+          (auth.connect(basic))(req, res, next)
+        }
+      })
     }
 
     app.set('strict routing', true)
