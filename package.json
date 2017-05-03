@@ -1,7 +1,7 @@
 {
   "name": "moniteur",
   "description": "Monitor your asset size over time, in your browser, or using the provided HTTP API.",
-  "version": "0.7.13",
+  "version": "0.7.14",
   "bin": {
     "moniteur": "./bin/moniteur"
   },
