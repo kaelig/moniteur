@@ -16,6 +16,14 @@
       "description": "Assets to track in YAML (alternatively, use the configuration files)",
       "value": "Moniteur's CSS: https://moniteur.herokuapp.com/stylesheets/style.css\nMoniteur's JavaScript: https://moniteur.herokuapp.com/js/bundle.js",
       "required": false
+    },
+    "USERNAME": {
+      "description": "Username for basic authentication protection (optional)",
+      "required": false
+    },
+    "PASSWORD": {
+      "description": "Password for basic authentication protection (optional)",
+      "required": false
     }
   },
   "addons": [
