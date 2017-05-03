@@ -66,19 +66,7 @@ program
   .description('start the server to show metrics in the browser')
   .action(() => {
     const app = express()
-    
-    // Basic auth
-    // Set USERNAME and PASSWORD environment variables
-    const basic = auth.basic({
-      realm: 'Moniteur'
-    }, (username, password, next) => {
-      next(username === process.env.USERNAME && password === process.env.PASSWORD)
-    })
 
-    if (process.env.USERNAME && process.env.PASSWORD) {
-      app.use(auth.connect(basic))
-    }
-    
     app.set('strict routing', true)
     const router = express.Router({
       caseSensitive: app.get('case sensitive routing'),
@@ -169,6 +157,18 @@ program
     }
 
     app.set('port', process.env.PORT || 3000)
+
+    // Basic auth
+    // Set USERNAME and PASSWORD environment variables
+    const basic = auth.basic({
+      realm: 'Moniteur'
+    }, (username, password, next) => {
+      next(username === process.env.USERNAME && password === process.env.PASSWORD)
+    })
+
+    if (process.env.USERNAME && process.env.PASSWORD) {
+      app.use(auth.connect(basic))
+    }
 
     if (app.get('env') === 'development') {
       const browserSync = require('browser-sync')
