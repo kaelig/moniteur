@@ -287,7 +287,7 @@ babel-code-frame@^6.16.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@^6.0.0, babel-core@^6.23.1, babel-core@^6.24.1:
+babel-core@^6.0.0, babel-core@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.24.1.tgz#8c428564dce1e1f41fb337ec34f4c3b022b5ad83"
   dependencies:
@@ -620,7 +620,7 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-preset-es2015@^6.22.0:
+babel-preset-es2015@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.24.1.tgz#d44050d6bc2c9feea702aaf38d727a0210538939"
   dependencies:
@@ -1642,7 +1642,7 @@ debug@2.6.4:
   dependencies:
     ms "0.7.3"
 
-debug@^2.1.1, debug@^2.2.0, debug@^2.6.1, debug@^2.6.3:
+debug@^2.1.1, debug@^2.2.0, debug@^2.6.3, debug@^2.6.6:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.6.tgz#a9fa6fbe9ca43cf1e79f73b75c0189cbb7d6db5a"
   dependencies:
@@ -2014,7 +2014,7 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-standard@^10.1.0:
+eslint-config-standard@^10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-10.2.1.tgz#c061e4d066f379dc17cd562c64e819b4dd454591"
 
@@ -2066,11 +2066,11 @@ eslint-plugin-promise@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.5.0.tgz#78fbb6ffe047201627569e85a6c5373af2a68fca"
 
-eslint-plugin-standard@^3.0.0:
+eslint-plugin-standard@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-3.0.1.tgz#34d0c915b45edc6f010393c7eef3823b08565cf2"
 
-eslint@^3.17.0:
+eslint@^3.19.0:
   version "3.19.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
@@ -2234,7 +2234,7 @@ express@2.5.x:
     mkdirp "0.3.0"
     qs "0.4.x"
 
-express@^4.15.0:
+express@^4.15.2:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
   dependencies:
@@ -2727,7 +2727,7 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-highcharts@^5.0.7:
+highcharts@^5.0.10:
   version v5.0.10
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-5.0.10.tgz#7a432c39a3c27992314ab17e45ecf29bd1a91132"
 
@@ -3392,7 +3392,7 @@ js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
 
-js-yaml@^3.2.3, js-yaml@^3.5.1, js-yaml@^3.7.0, js-yaml@^3.8.2:
+js-yaml@^3.2.3, js-yaml@^3.5.1, js-yaml@^3.7.0, js-yaml@^3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.8.3.tgz#33a05ec481c850c8875929166fe1beb61c728766"
   dependencies:
@@ -4702,7 +4702,7 @@ pug-walk@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-1.1.2.tgz#debb24c070a95d5fc2aebf3589261833d2332e3b"
 
-pug@^2.0.0-beta4:
+pug@^2.0.0-rc.1:
   version "2.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/pug/-/pug-2.0.0-rc.1.tgz#723c08b3349bb9b96865b9ed7d3e379e247cd984"
   dependencies:
@@ -4910,7 +4910,7 @@ redis-parser@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
 
-redis@*, redis@^2.6.5:
+redis@*, redis@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/redis/-/redis-2.7.1.tgz#7d56f7875b98b20410b71539f1d878ed58ebf46a"
   dependencies:
@@ -5021,7 +5021,7 @@ request@2.78.0:
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
 
-request@^2.79.0, request@^2.80.0, request@^2.81.0:
+request@^2.79.0, request@^2.81.0:
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -5568,7 +5568,7 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stylestats@^7.0.0:
+stylestats@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/stylestats/-/stylestats-7.0.1.tgz#e31801f6785adcdbf3174d2dfd65305fd5b661e6"
   dependencies:
@@ -5962,7 +5962,7 @@ webidl-conversions@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.1.tgz#8015a17ab83e7e1b311638486ace81da6ce206a0"
 
-webpack-dev-middleware@^1.10.1:
+webpack-dev-middleware@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.2.tgz#2e252ce1dfb020dbda1ccb37df26f30ab014dbd1"
   dependencies:
@@ -5971,7 +5971,7 @@ webpack-dev-middleware@^1.10.1:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-hot-middleware@^2.17.1:
+webpack-hot-middleware@^2.18.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.18.0.tgz#a16bb535b83a6ac94a78ac5ebce4f3059e8274d3"
   dependencies:
@@ -5987,7 +5987,7 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.2.1:
+webpack@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.1.tgz#15a91dbe34966d8a4b99c7d656efd92a2e5a6f6a"
   dependencies:
@@ -6204,7 +6204,7 @@ yargs@^3.19.0:
     window-size "^0.1.4"
     y18n "^3.2.0"
 
-yargs@^7.0.1:
+yargs@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-7.1.0.tgz#6ba318eb16961727f5d284f8ea003e8d6154d0c8"
   dependencies:
