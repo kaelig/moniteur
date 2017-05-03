@@ -5,6 +5,7 @@ const Record = require('../lib/record')
 const nconf = require('nconf')
 const compression = require('compression')
 const express = require('express')
+const auth = require('http-auth')
 const slashes = require('express-slashes')
 const path = require('path')
 const lem = require('lem')
@@ -65,12 +66,33 @@ program
   .description('start the server to show metrics in the browser')
   .action(() => {
     const app = express()
+
+    // Basic auth
+    // Set USERNAME and PASSWORD environment variables
+    const basic = auth.basic({
+      realm: 'Moniteur'
+    }, (username, password, next) => {
+      next(username === process.env.USERNAME && password === process.env.PASSWORD)
+    })
+
+    if (process.env.USERNAME && process.env.PASSWORD) {
+      app.use(function(req, res, next) {
+        // Exclude /metrics so we can fetch() them
+        if (req.path.startsWith('/metrics')) {
+          next()
+        } else {
+          (auth.connect(basic))(req, res, next)
+        }
+      })
+    }
+
     app.set('strict routing', true)
     const router = express.Router({
       caseSensitive: app.get('case sensitive routing'),
       strict: app.get('strict routing')
     })
     app.use(compression())
+
     app.use(router)
     app.use(slashes())
 
