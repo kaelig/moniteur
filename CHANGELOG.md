@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.15"></a>
+## [0.7.15](https://github.com/kaelig/moniteur/compare/v0.7.14...v0.7.15) (2017-05-03)
+
+
+### Bug Fixes
+
+* **package:** update yargs to version 8.0.1 ([#22](https://github.com/kaelig/moniteur/issues/22)) ([f211aed](https://github.com/kaelig/moniteur/commit/f211aed))
+* **yarn:** upgrade yarn dependency tree ([cc87fd7](https://github.com/kaelig/moniteur/commit/cc87fd7))
+
+
+
 <a name="0.7.14"></a>
 ## [0.7.14](https://github.com/kaelig/moniteur/compare/v0.7.13...v0.7.14) (2017-05-03)
 
