@@ -67,13 +67,6 @@ program
   .action(() => {
     const app = express()
 
-    app.set('strict routing', true)
-    const router = express.Router({
-      caseSensitive: app.get('case sensitive routing'),
-      strict: app.get('strict routing')
-    })
-    app.use(compression())
-
     // Basic auth
     // Set USERNAME and PASSWORD environment variables
     const basic = auth.basic({
@@ -85,6 +78,13 @@ program
     if (process.env.USERNAME && process.env.PASSWORD) {
       app.use(auth.connect(basic))
     }
+
+    app.set('strict routing', true)
+    const router = express.Router({
+      caseSensitive: app.get('case sensitive routing'),
+      strict: app.get('strict routing')
+    })
+    app.use(compression())
 
     app.use(router)
     app.use(slashes())
