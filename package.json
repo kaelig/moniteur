@@ -76,7 +76,7 @@
     "stylestats": "^7.0.1",
     "valid-url": "^1.0.9",
     "webpack": "^2.4.1",
-    "yargs": "^7.1.0"
+    "yargs": "^8.0.1"
   },
   "config": {
     "commitizen": {
