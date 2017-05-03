@@ -73,6 +73,19 @@ program
       strict: app.get('strict routing')
     })
     app.use(compression())
+
+    // Basic auth
+    // Set USERNAME and PASSWORD environment variables
+    const basic = auth.basic({
+      realm: 'Moniteur'
+    }, (username, password, next) => {
+      next(username === process.env.USERNAME && password === process.env.PASSWORD)
+    })
+
+    if (process.env.USERNAME && process.env.PASSWORD) {
+      app.use(auth.connect(basic))
+    }
+
     app.use(router)
     app.use(slashes())
 
@@ -157,18 +170,6 @@ program
     }
 
     app.set('port', process.env.PORT || 3000)
-
-    // Basic auth
-    // Set USERNAME and PASSWORD environment variables
-    const basic = auth.basic({
-      realm: 'Moniteur'
-    }, (username, password, next) => {
-      next(username === process.env.USERNAME && password === process.env.PASSWORD)
-    })
-
-    if (process.env.USERNAME && process.env.PASSWORD) {
-      app.use(auth.connect(basic))
-    }
 
     if (app.get('env') === 'development') {
       const browserSync = require('browser-sync')
