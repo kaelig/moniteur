@@ -54,7 +54,7 @@
     "babel-preset-es2015": "^6.24.1",
     "commander": "^2.9.0",
     "compression": "^1.6.2",
-    "debug": "^2.6.6",
+    "debug": "^3.0.1",
     "express": "^4.15.2",
     "express-slashes": "^0.1.1",
     "glob": "^7.1.1",
