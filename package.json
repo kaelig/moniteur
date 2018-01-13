@@ -6,7 +6,7 @@
     "moniteur": "./bin/moniteur"
   },
   "engines": {
-    "node": ">= 6.3.1",
+    "node": ">= 8.9.4",
     "npm": "latest"
   },
   "repository": {
