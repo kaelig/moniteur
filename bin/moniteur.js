@@ -40,9 +40,9 @@ nconf
 nconf
   .set('db:redis_url',
     process.env.REDIS_URL ? process.env.REDIS_URL.replace(/redis\/\//, 'redis://')
-    : (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.replace(/redis\/\//, 'redis://')
-      : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://')
-        : null)))
+      : (process.env.REDISCLOUD_URL ? process.env.REDISCLOUD_URL.replace(/redis\/\//, 'redis://')
+        : (nconf.get('db:redis_url') ? nconf.get('db:redis_url').replace(/redis\/\//, 'redis://')
+          : null)))
 
 program
   .command('record')
@@ -76,7 +76,7 @@ program
     })
 
     if (process.env.USERNAME && process.env.PASSWORD) {
-      app.use(function(req, res, next) {
+      app.use(function (req, res, next) {
         // Exclude /metrics so we can fetch() them
         if (req.path.startsWith('/metrics')) {
           next()
