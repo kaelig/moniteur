@@ -42,6 +42,6 @@ module.exports = router.get(/^\/(\w+)(\/(\d+)\.\.(\d+))?$/, (req, res) => {
         Object.assign(
           {},
           sensors[assetType][metric],
-          { data: data }))
+          { data }))
   }).toArray(data => res.json(data))
 })
