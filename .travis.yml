@@ -1,3 +1,9 @@
 language: node_js
 node_js:
-  - 8.9.4
+- 8.9.4
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
+env:
+  global:
+    secure: g+LI0n3NmGqXlrFPX3gwjf+EOjrDtdl2gpsBFTt7rL3mik8xdEhVxMu4kFBI+CByHP/JiwvYSaVgqw12bf2ATPLcWDwwmjmc3dPJUIHMAkGicLMBYuJRZdQIfB6j8OY1jA8fqCs9xEU691V3N8hOYYsNWY5d4ySMiGaRtvIWM5Q=
