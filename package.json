@@ -76,7 +76,7 @@
     "request": "^2.83.0",
     "stylestats": "^7.0.1",
     "valid-url": "^1.0.9",
-    "webpack": "^3.10.0",
+    "webpack": "^4.16.2",
     "yargs": "^10.1.1"
   },
   "config": {
