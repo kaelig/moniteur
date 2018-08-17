@@ -31,7 +31,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jasmine": "^2.9.1",
     "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest-cli": "^22.0.6",
     "nodemon": "^1.14.11",
