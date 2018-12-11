@@ -59,7 +59,7 @@
     "express-slashes": "^0.1.1",
     "glob": "^7.1.2",
     "gzip-size": "^4.1.0",
-    "highcharts": "^6.0.4",
+    "highcharts": "^7.0.0",
     "highland": "^3.0.0-beta.2",
     "http-auth": "^3.2.3",
     "js-yaml": "^3.10.0",
