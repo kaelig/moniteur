@@ -3455,9 +3455,9 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-highcharts@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.0.4.tgz#bb6956de2fbe24fa4b6141be7ceadc052ca2abf9"
+highcharts@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-7.1.0.tgz#24dfc9ecba0aa4da18f45759084deb0ad6c7cd20"
 
 highland@^3.0.0-beta.2:
   version "3.0.0-beta.4"
