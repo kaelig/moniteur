@@ -2553,9 +2553,10 @@ eslint-plugin-import@^2.8.0:
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
 
-eslint-plugin-jasmine@^2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-2.9.1.tgz#22e19a59f16f3a5f643a04aba04438d0e3047030"
+eslint-plugin-jasmine@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-3.0.0.tgz#5f4b4df8c0c59838f78180b444de089df1ff4068"
+  integrity sha512-Kx8+CB/ia3pQGlv5LMxHxdcUIJ94+y3QKtvdwhgTRkFjcb0k0uB91fEMM/4WMQS/x+X7HrA6f8K4YNRhuv5uHg==
 
 eslint-plugin-node@^6.0.0:
   version "6.0.0"
