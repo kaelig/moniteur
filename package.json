@@ -34,7 +34,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest-cli": "^22.0.6",
-    "nodemon": "^1.14.11",
+    "nodemon": "^2.0.1",
     "standard-version": "^4.3.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0"
