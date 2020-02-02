@@ -988,9 +988,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bcryptjs@^2.3.0:
+bcryptjs@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
+  integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
 
 better-assert@~1.0.0:
   version "1.0.2"
@@ -3511,14 +3512,15 @@ htmlparser2@^3.9.1:
     inherits "^2.0.1"
     readable-stream "^2.0.2"
 
-http-auth@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/http-auth/-/http-auth-3.2.3.tgz#636842b71d6e1f2c98dba09af54417a1fef8b61c"
+http-auth@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/http-auth/-/http-auth-4.0.2.tgz#ea149fcc568e90b0340b7e2374daf05ef4b6e7a6"
+  integrity sha512-J0HNZGW9kFdOPL9H1oPnnWcT6r9BJB+WM4bwhwobleP6mCHRJpS1GWL8U0x1ndSYu13+xbFVPph41TKwJDnC7w==
   dependencies:
     apache-crypt "^1.1.2"
     apache-md5 "^1.0.6"
-    bcryptjs "^2.3.0"
-    uuid "^3.0.0"
+    bcryptjs "^2.4.3"
+    uuid "^3.4.0"
 
 http-errors@1.6.2, http-errors@~1.6.2:
   version "1.6.2"
@@ -7370,6 +7372,11 @@ uuid@^3.0.0:
 uuid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
+
+uuid@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
+  integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uws@~0.14.4:
   version "0.14.5"
