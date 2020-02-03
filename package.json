@@ -61,7 +61,7 @@
     "gzip-size": "^4.1.0",
     "highcharts": "^6.0.4",
     "highland": "^3.0.0-beta.2",
-    "http-auth": "^3.2.3",
+    "http-auth": "^4.1.2",
     "js-yaml": "^3.10.0",
     "lem": "1.0.0",
     "level": "^3.0.0",
