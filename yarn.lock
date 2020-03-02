@@ -3455,9 +3455,10 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-highcharts@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.0.4.tgz#bb6956de2fbe24fa4b6141be7ceadc052ca2abf9"
+highcharts@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-8.0.1.tgz#b34b8b8df50ae2864fa699559259f3d5c65f6d9c"
+  integrity sha512-qxEJQIk/G8tPt8crGsuXRjE0apJG4LBZxDmzTklpUvoQU12VG9fRnOlPOqGfuVl0Pz+GibVLWrJRAU3HpB2wuw==
 
 highland@^3.0.0-beta.2:
   version "3.0.0-beta.4"
