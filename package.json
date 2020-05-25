@@ -70,7 +70,7 @@
     "nconf": "^0.10.0",
     "nconf-yaml": "^1.0.2",
     "pretty-bytes": "^4.0.2",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^3.0.0",
     "redis": "^2.8.0",
     "redisdown": "^0.1.12",
     "request": "^2.83.0",
